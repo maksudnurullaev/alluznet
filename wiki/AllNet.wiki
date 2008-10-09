@@ -1,0 +1,3 @@
+=AllUz.Net=
+
+_We will use RoR + extjs as main platforms & tools for this project. Also, we will create here all necessary documentation._
