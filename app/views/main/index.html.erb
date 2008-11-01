@@ -1,0 +1,64 @@
+<html>
+	<head>
+          <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<title>HYDRA</title>
+                
+                <%= javascript_include_tag "ext-base"  %>
+                <%= javascript_include_tag "ext-all"  %>
+
+                <%= stylesheet_link_tag "ext-all" %>
+                <%= stylesheet_link_tag "icons" %>
+                <%= javascript_include_tag "login"  %>
+                <%= javascript_include_tag "registration"  %>
+		<%= javascript_include_tag "blogs"  %>
+                 <%= javascript_include_tag "treectrl"%>
+                <%= javascript_include_tag "main" %>
+		<%= javascript_include_tag "tooltips"%> 
+				
+	</head>
+        
+	<body>
+<script language="javascript">
+       
+           
+        treeloader = new Ext.tree.TreeLoader({
+				url: '/main/treedata',
+				requestMethod: 'GET'
+			});
+                        
+        treeloader.on("beforeload", function(treeLoader, node) {
+           
+            treeloader.baseParams.index = node.getDepth();    
+            treeloader.baseParams.path = node.getPath('text');
+            
+            }, this); 
+                       
+       treetxt = {
+			title: 'Main menu',
+			region: 'west',
+			xtype: 'treepanel',
+			margins: '0 0 0 5',
+                        id: 'main-tree',
+			width: 200,
+			split: true,
+			minSize: 100,
+			maxSize: 300,
+			collapsible: true,
+			animate: true,
+                        lines: true,
+                        useArrows: false, //tuzlishini almashtirish
+			autoScroll: true,
+                        root: new Ext.tree.AsyncTreeNode({
+                            id: 'root',
+                            text: ''
+                            }),
+                        listeners: {
+				'click': tree_click,
+				'dblclick': tree_dbclick
+			},                        
+                        rootVisible: false,
+                        loader: treeloader
+		}; 
+</script>
+</html>
+ 
