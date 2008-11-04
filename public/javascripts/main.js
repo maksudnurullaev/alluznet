@@ -25,7 +25,7 @@ function tree_dbclick(tree)
 				id: tree.attributes.id + '-tab',
 				iconCls: tree.attributes.iconCls,
 				html: tree.attributes.html,
-				closable: true
+				closable: true,
 			}).show();
 		}
 	}
@@ -50,7 +50,7 @@ function first_load()
 				autoScroll: true,
 				region: 'center',
 				border: true,
-				split: false
+				split: false,
 				
 			},{
 				layout: 'border',
@@ -63,7 +63,7 @@ function first_load()
 				layout: 'accordion',
 				layoutConfig: {
                     titleCollapse: false,
-                    animate: true
+                    animate: true,
                 },
                 collapseFirst: true,
 				
@@ -74,25 +74,22 @@ function first_load()
 					margins: '0 0 0 5',
 					layout: 'table',
 					items: [{
-                                                xtype: 'button',
+					    xtype: 'button',
 						text: '',
 						iconCls: 'icon-eng',
 						border: false,
-                                                id: 'button-eng',
 						width: 55
 					},{
 						xtype: 'button',
 						text: '',
 						iconCls: 'icon-rus',
 						border: false,
-                                                id: 'button-rus',
 						width: 55
 					},{
 						xtype: 'button',
 						text: '',
 						iconCls: 'icon-uzb',
 						border: false,
-                                                id: 'button-uzb',
 						width: 55
 					}]
 
@@ -110,7 +107,7 @@ function first_load()
 						border: false,
 						margins: '5 0 0 0',
 						width: 80,
-						id: 'btn_login',
+						id: 'login-button',
 						listeners: {
 						    'click': show_login
 						}
@@ -121,15 +118,13 @@ function first_load()
 						iconCls: 'tree-1-2',
 						margins: '5 0 0 0',
 						border: false,
-                                                id: 'btn_registration',
-                                                width: 80
+						width: 80
 					},{
 					    xtype: 'button',
 						text: '',
 						iconCls: 'tree-1-3',
 						html: 'req',
 						border: false,
-                                                id: 'btn-logout',
 						width: 55
 					
 					}]
@@ -167,7 +162,7 @@ function first_load()
 				'dblclick': tree_dbclick
 			},
 			
-			root: new Ext.tree.AsyncTreeNode()
+			root: new Ext.tree.AsyncTreeNode(),
 		},{
 			title: 'Main tab panel',
 			xtype: 'tabpanel',
@@ -185,7 +180,7 @@ function first_load()
 			items: [{
 				html: 'Asosiy Sahifa',
 				iconCls:'tree-1-1',
-				title: 'Homa page'
+				title: 'Homa page',
 			}]
 
 		},{
@@ -194,13 +189,12 @@ function first_load()
 			height: 100,
 			collapsible: true,
 			split: false,
-			margins: '5 5 5 5'
+			margins: '5 5 5 5',
 
 		}]
 
 
 	});
-        create_tooltips();
 }
 
 
