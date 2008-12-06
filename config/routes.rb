@@ -1,5 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
-map.connect '', :controller=>'main'
+  map.connect '', :controller => "main", :action => "index"
+  map.connect 'register', :controller => "main", :action => "register"
+  
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

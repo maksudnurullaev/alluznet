@@ -1,4 +1,22 @@
+require 'smtp_tls'
 # Be sure to restart your server when you modify this file
+
+
+#ActionMailer::Base.delivery_method = :sendmail
+#ActionMailer::Base.server_settings = {
+#  :address  => "mail.website-url-here.com",
+#  :port  => 25,
+#  :domain  => "website-url-here.com",
+#  :user_name  => "mXXXXXXX",
+#  :password  => "password",
+#  :authentication  => :login
+#    }
+#ActionMailer::Base.perform_deliveries = true
+#ActionMailer::Base.raise_delivery_errors = true
+#ActionMailer::Base.default_charset = "utf-8"
+
+
+
 
 # Uncomment below to force Rails into production mode when
 # you don't control web/app server and can't set it the proper way
@@ -11,6 +29,26 @@ RAILS_GEM_VERSION = '2.1.1' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
+
+
+config.action_mailer.raise_delivery_errors = true
+config.action_mailer.delivery_method = :smtp
+#config.action_mailer.default_url_options = { :host => "194.67.23.111" }
+config.action_mailer.default_url_options = { :host => "smtp.gmail.com" }
+config.action_mailer.smtp_settings = {
+  :address => 'smtp.gmail.com',
+  :port => 587,
+  :authentication => :login,
+  :domain => 'gmail.com',
+  :user_name => 'djbaxo@gmail.com',
+  :password => '050386'
+
+  #:address        => 'Mailserver2',
+  #:authentication => :login,
+  #:user_name      => 'mbaxtiyor',
+  #:password       => 'Geniuz050386#$'
+}
+
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.
@@ -49,7 +87,7 @@ Rails::Initializer.run do |config|
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
     :session_key => '_alluznet_session',
-    :secret      => '75903162e03fd09e53c404a0868a7afd21ec51a8aa11b2df44ffaa84bec28932c37f686d48991bfc57fe99ededc606912413a4755a3ae1f7e508a1b37b257bb9'
+    :secret      => '5ff2d75a0019d87985876c0d3e6ac177167dc486284665af53f138099c6effa474983b77f97d24f326c89328f4b9a57ee569cbb69f5508b3881ccb2a54a3efeb'
   }
 
   # Use the database for sessions instead of the cookie-based default,
