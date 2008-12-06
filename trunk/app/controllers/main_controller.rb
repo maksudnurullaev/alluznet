@@ -1,20 +1,28 @@
 class MainController < ApplicationController
-  $uname='Гость'
   def index
+  
 	if cookies[:alluznet_lang]==nil || cookies[:alluznet_lang]==""
 		cookies[:alluznet_lang] = 'ru'
 		@lang='lang_ru'
 	else
 		@lang='lang_'+cookies[:alluznet_lang]
 	end
-	
+	if cookies[:alluznet_lang]=='uz'
+		@uname='Мехмон'
+		@title='AllUz.Net Бош сахифаси'
+	elsif cookies[:alluznet_lang]=='en'
+		@uname='Guest'
+		@title='Main page AllUz.Net'
+	else
+		@uname='Гость'
+		@title='Главная страница AllUz.Net'
+	end
     @cookie = false
-	
-    @uid = cookies[:alluznet].to_s
+	@uid = cookies[:alluznet].to_s
     if (!@uid.empty?)
        @cookie = true
        @n = User.find(@uid)
-       $uname = @n['email']
+       @uname = @n['email']
     end
   end
   
@@ -109,7 +117,7 @@ class MainController < ApplicationController
     if !@ui.empty?
         if hashed(params[:userpass])==@ui[0].salted_password
 			if  @ui[0].email_confirmed
-	            $uname=@ui[0].email
+	            @uname=@ui[0].email
 	            data = { :success => 'true', :text => 'Инфо'}
 	            cookies[:alluznet] = @ui[0]['id'].to_s
 			else
