@@ -150,7 +150,20 @@
 						fieldLabel: Language.old_pass,
 						id: 'oldPass',
 						name: 'oldPass',
-						inputType: 'password'
+						inputType: 'password',
+						width: 180,
+                        allowBlank: false,
+						blankText: 'Вы должны ввести пароль',//You must enter a password
+						minLengthText: "Минимум 6 символов",
+						minLength: 6,
+						tooltip:{
+							tip:'Введите Ваша <b>Пароль</b>',//Enter your <b>Password</b>
+							width: 150
+						},
+                        id: 'login_pass',
+                        name: 'login_pass'
+						
+						
 					},{
 						fieldLabel: Language.new_pass,
 						id: 'newPass',
