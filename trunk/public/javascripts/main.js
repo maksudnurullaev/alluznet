@@ -1,4 +1,3 @@
-
 function first_load()
 {
     Ext.QuickTips.init();
@@ -9,6 +8,4 @@ function first_load()
         items: [banner, tabpanel,treetxt]
     });
 }
-
 Ext.onReady(first_load);
-
