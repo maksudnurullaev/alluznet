@@ -74,9 +74,9 @@ function show_Registration()
 						name: 'email',
 						id: 'email',
 						vtype:'email',
-						blankText: 'Вы должны ввести действительный адрес электронной почты',//You must enter a valid email account>
+						blankText: Language.must_email,
 						emptyText: 'name@domain.com',
-						vtypeText: 'Пожалуйста, введите действительный адрес электронной почты: name@domain.com',//Please enter a valid email address
+						vtypeText: Language.must_email,
 						tooltip:{
 							tip:'Введите адрес <b>электронной почты</b>: name@domain.com',//Enter a valid <b>email address</b>
 							width: 170
@@ -95,11 +95,11 @@ function show_Registration()
 							'focus': VerUser
 						},
                         allowBlank: false,
-						blankText: 'Вы должны ввести пароль',//You must enter a password
-						minLengthText: "Минимум 6 символов",
+						blankText: Language.must_pass,
+						minLengthText: Language.min_pass,
 						minLength: 6,
 						tooltip:{
-							tip:'Введите Ваша <b>Пароль</b>',//Enter your <b>Password</b>
+							tip: Language.enter_pass,
 							width: 150
 						},
                         id: 'login_pass',

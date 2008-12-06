@@ -1,4 +1,4 @@
-
+//Функция для изменение язика
 
 function setLang(menu)
 {
@@ -15,7 +15,6 @@ function setLang(menu)
 		}
     });
 }
-
 
 
 function tree_add()
