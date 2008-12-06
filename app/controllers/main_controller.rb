@@ -1,150 +1,231 @@
-$a = 1
 class MainController < ApplicationController
-  
+  $uname='Гость'
   def index
-    #headers["Content-Type"] = "text/plain; charset=utf-8" 
-  end
-  
-  def treedata
-    @path = params[:path]
-    @index = params[:index]
-    if @path != "/"
-      @path = @path [-(@path.length - 2) .. -1]
-      if @path != "HYDRA"
-          @arr = @path.split('/');
-          @path = ""
-          for ss in @arr
-            @path += ss + "."
-          end
-      else
-          @path += "."
-      end
-      @base = Admin.find(:all , :conditions => [ "tree LIKE ? AND ns = ?", @path+"%", @index])
-      #SELECT * FROM admins WHERE (tree LIKE 'HYDRA.Users.%' AND ns = '2')
-      @jsontxt = "["
-      for bs in @base 
-          @p = bs.tree+".%"
-          @basesub = Admin.find(:all , :conditions => [ "tree LIKE ?", @p])
-          if (@basesub.empty?)
-              @leaf = "true"
-              @icon = "iconCls: '" + bs.icon +  "',";    
-          
-          else
-              @leaf = "false"
-              @icon = "iconCls: 'tree-1-3',";    
-          end
-          @tree_title = bs.tree;
-          @arr=@tree_title.split('.')
-          @title=@arr[@arr.length-1]
-         
-          @jsontxt += "{text: '" + @title+ "', 
-                        " + @icon +"
-                        qtip: '" + bs.title + "',
-                        id: '" + bs.tree + "',
-                        leaf: " + @leaf + "                     
-                      },\n"
-        end 
-        @jsontxt += "]"
-        puts @jsontxt
-    else
-      @jsontxt = "[{text: 'HYDRA', id: 'HYDRA'}]"
+	puts cookies[:alluznet_lang]
+	if cookies[:alluznet_lang]==nil || cookies[:alluznet_lang]==""
+		cookies[:alluznet_lang] = 'ru'
+		@lang='lang_ru'
+	else
+		@lang='lang_'+cookies[:alluznet_lang]
+	end
+	
+    @cookie = false
+	
+    @uid = cookies[:alluznet].to_s
+    if (!@uid.empty?)
+       @cookie = true
+       @n = User.find(@uid)
+       $uname = @n['email']
     end
+  end
+  
+  #multilanguage
+  
+  def chage_language
+	if cookies[:alluznet_lang]==params[:lang]
+		data='false'
+	else
+		cookies[:alluznet_lang]=params[:lang]
+		data='true'
+	end
+	render :text => data, :layout => false
+  end
+  
+  
+  
+  def getTexts
+	lang=params[:lang]
+	puts "------------------------"
+	puts lang
+	@texts=Langs.find(:all, :select => "tag,"+lang)
+	@jsont=""
+	for sub in @texts
+		@jsont = sub.tag+ ": "
+		if lang=="uz"
+			@jsont += sub.uz+",\n"
+		elsif lang=="ru"
+			@jsont += sub.ru+",\n"
+		else 
+			@jsont += sub.en+",\n"
+		end
+	end
+	@jsont=@jsont[0, @jsont.length-2]
+	puts @jsont
+	render :text => @jsont, :layout => false
+  end
+  
+  
+#Users  
+  def update_pass
+    headers["Content-Type"] = "text/plain; charset=utf-8"
+	ui = User.find(:all , :conditions => ["id=?",cookies[:alluznet].to_s])
+	if !ui.empty?
+		if ui[0].salted_password==hashed(params[:op])
+			ui[0].salted_password=hashed(params[:np])
+			if ui[0].save
+				data = "Пароль успешно сохранен!"
+			else
+				data = "Не получилось, повторите позже!"
+			end
+		else 
+			data = "Пароль введен неправильно!"
+		end
+	else
+		data =  "!"
+	end
+	render :text => data, :layout => false
+  end
+  
+  def cabinet
+  
+  end
     
-     render :text => @jsontxt
+  def news
+	
   end
   
-  
-  def tabdata
-    headers["Content-Type"] = "text/plain; charset=utf-8" 
-    @path = params[:path]
-    @data = Admin.find(:all, :conditions => ["tree = ?", @path])
-    render :text => @data[0].title, :layout => false
+  def logout
+    cookies.delete(:alluznet)
+    redirect_to "/main"
   end
-   
-  
-  def update_title
-    headers["Content-Type"] = "text/plain; charset=utf-8" 
-    @path = params[:path]
-    @value = params[:value]
-    @data = Admin.update_all(['title = ?', @value], ['tree = ?', @path])   
-    render :text => "O'zgartirish amalga oshirildi", :layout => false
+    
+  def forgot
+	headers["Content-Type"] = "text/plain; charset=utf-8" 
+	@ui = User.find(:all , :conditions => ["email=?",params[:email]])
+	npas = generatePass
+	if !@ui.empty?
+		@ui[0].salted_password = hashed(npas)
+		if @ui[0].save
+			Msender.deliver_forgot_send(params[:email], "AllUzNet", npas)
+			data = { :success => 'true', :text => "Новая пароль отправлено на почту "+params[:email]+"!"}
+		else
+			data = { :failure => 'true', :text => "Не поличилось попрубуйте позже!"}
+		end
+	else
+			data = { :failure => 'true', :text => "Такая пользователь не сущаствует!"}
+	end
+	render :text => data.to_json, :layout => false
   end
-  
-  
-  def tree_add
-   @text = params[:treetext] 
-   @title = params[:treetitle]
-   @path = params[:path]
-   @find = Admin.find(:all, :conditions => ["tree = ?", @path +"."+ @text])
-   if(@find.empty?)
-       @arr = @path.split(".")
-       @ns = @arr.size
-       @table = Admin.new
-       @table.tree = @path +"."+ @text
-       @table.title = @title
-       @table.ns = @ns
-       @table.icon = "tree-1-1"
-       if (@table.save)
-          data={ :success => 'true', :text => 'Qo\'shildi!!!'}
-        else 
-          data={ :failure => 'true', :text => 'MB XATO'}
-        end
-   else
-      data={ :failure => 'true', :text => 'Bunday text menyuda mavjud'}
-   end
-    render :text => data.to_json, :layout => false
-  end
-  
-  def tree_del
-    @path = params[:path] + "%"
-    Admin.delete_all(["tree LIKE ?", @path])
-    render :text => "O'chirildi"
-  end
-
   
   def login
     headers["Content-Type"] = "text/plain; charset=utf-8" 
-      puts params[:userlogin]
-      
-      if (params[:userlogin] == "geniuz" && params[:userpass] == "123")
-         data = { :success => 'dd', :text => 'Success'}
-      else
-         data = { :failure => 'true', :text => "Username or Password wrong !"}
-      end
-     render :text => data.to_json, :layout => false
-  end
-
-  def edit_node
-    headers["Content-Type"] = "text/plain; charset=utf-8" 
-    @value = params[:child_value] 
-    @tree = params[:tree]
-    puts @value
-    @oldvalue = params[:olddata]
-    @arr = @tree.split(".")
-#    @arr[-1] = @value
-    @result = ""
-    for aa in @arr
-      @result += aa + "."
-    end
-#    @result=@result[0,@result.length-1]
-    @dbdata=Admin.find(:all, :conditions => [ "tree LIKE ?", @tree+"%"])
-    for row in @dbdata
-      uzg = row.tree
-      @newuzg='';
-      @arr1=uzg.split('.')
-      for @el in @arr1
-        if(@el==@oldvalue)
-          @el=@value
+    @ui = User.find(:all , :conditions => ["email=?",params[:userlogin]])
+    if !@ui.empty?
+        if hashed(params[:userpass])==@ui[0].salted_password
+			if  @ui[0].email_confirmed
+	            $uname=@ui[0].email
+	            data = { :success => 'true', :text => 'Инфо'}
+	            cookies[:alluznet] = @ui[0]['id'].to_s
+			else
+				data = { :failure => 'true', :text => "Вы не подтверждали электронную почту!"}
+			end
+        else
+            data = { :failure => 'true', :text => "Электронный почта или пароль неправилно!"}
         end
-         @newuzg+=@el+'.'
-      end
-      @newuzg = @newuzg[0, @newuzg.length - 1]
-      Admin.update_all(["tree = ?", @newuzg],["id = ?", row.id])
-    end    
-    #@data = Admin.update_all(['tree = ?', @result], ['tree = ?', @tree])    
-    datt = {:success => "true"}
-    render :text => datt.to_json, :layout => false
+    else
+        data = { :failure => 'true', :text => "Электронный почта или пароль неправилно!"}
+    end
+    render :text => data.to_json, :layout => false
   end
-  #UPDATE admins SET tree = 'result' WHERE (tree = 'tree')
+  
+  def verUser
+	if !params[:email].empty?
+		bool = User.exists?(["email = (?)", params[:email]])
+		if bool
+			data = "Эта электронная почта уже зарегистрирован!"
+		else
+			data = "Можно использовать!"
+		end
+	else
+		data = ""
+	end
+	render :text => data, :layout => false
+  end
+  
+  def activate
+	@ui = User.find(:all , :conditions => ["salted_password=? AND email=?",params[:kod], params[:ue]])
+	if !@ui.empty?
+		if (@ui[0].email_confirmed!='t')
+			@ui[0].email_confirmed='t'
+			if @ui[0].save
+				data = "Ваша учетная запись активирован!"
+			end
+		else
+			data = "Ваша учетная запись уже активирован!"
+		end
+	else
+		data = "Такая пользователь не существует!"
+	end
+	render :text => data, :layout => false
+  end
+	
+  def register
+	if request.get?
+	  @user=User.new
+      @user.email=params[:email]
+      @user.password=params[:login_pass]
+	  hs = 'http://localhost:3000/main/activate/?kod='+hashed(params[:login_pass])+'&ue='+params[:email]
+	  if @user.save
+		 Msender.deliver_send(@user.email, "AllUzNet", hs)
+		 data = { :success => 'true', :text => 'Спосибо за регистрация. Данные о подтверждении авторизации отправлены на почту '+@user.email}  
+      else
+         data = { :failure => 'true', :text => 'Регистрация не успешно'}  
+      end
+    else
+      data = { :failure => 'true', :text => 'Регистрация не успешно'}  
+    end
+    render :text => data.to_json, :layout => false
+  end
+  
 
+  #categories
+  
+  def getCategories
+	headers["Content-Type"] = "text/plain; charset=utf-8" 
+    @path = params[:path]
+	@path = @path.chomp("root") 
+	@index = params[:index]
+	@jsontxt = "["
+	if @path==''
+		@base = Category.find(:all , :conditions => [ "count = ?", @index])
+	else
+		@base = Category.find(:all , :conditions => [ "category LIKE ? AND count = ?", @path+"%",@index])
+	end
+	for sub in @base 
+		@p = sub.category+".%"
+		@basesub = Category.find(:all , :conditions => [ "category LIKE ?", @p])
+		if (@basesub.empty?)
+			@leaf = "true"
+		else
+			@leaf = "false"
+		end
+		@jsontxt += "{text: '" + sub.title+ "', 
+		id: '" + sub.category+ "',
+		leaf: " + @leaf + "                     
+		},\n"
+	end	
+	@jsontxt += "]"
+	render :text => @jsontxt
+  end
+
+	private
+	
+  def hashed(string)
+    Digest::SHA1.hexdigest(string)
+  end
+  
+  def generatePass
+	pass = ""
+	while true
+		x=rand(123)
+		if x>48 && x<57 || x>65 && x<90 || x>97 && x<122
+			pass += x.chr
+			if pass.length==15
+				break
+			end
+		end
+	end
+	return pass
+  end
+  
 end
