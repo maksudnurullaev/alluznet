@@ -153,27 +153,26 @@
 						inputType: 'password',
 						width: 180,
                         allowBlank: false,
-						blankText: 'Вы должны ввести пароль',//You must enter a password
-						minLengthText: "Минимум 6 символов",
+						blankText: Language.must_pass,
+						minLengthText: Language.min_pass,
 						minLength: 6,
 						tooltip:{
-							tip:'Введите Ваша <b>Пароль</b>',//Enter your <b>Password</b>
+							tip: Language.enter_pass,
 							width: 150
-						},
-                        id: 'login_pass',
-                        name: 'login_pass'
-						
-						
-					},{
+						}
+                    },{
 						fieldLabel: Language.new_pass,
 						id: 'newPass',
-						inputType: 'password'
+						inputType: 'password',
+						width: 180,
+                        allowBlank: false
 					},{
 						fieldLabel: Language.conf_pass,
 						id: 'confPass',
 						inputType: 'password',
                         vtype: 'password',
-                        initialPassField: 'newPass'
+                        initialPassField: 'newPass',
+						width: 180
 					}],
 					bbar: new Ext.StatusBar({
 						defaultText: '',
