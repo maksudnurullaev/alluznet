@@ -1,7 +1,6 @@
 class MainController < ApplicationController
   $uname='Гость'
   def index
-	puts cookies[:alluznet_lang]
 	if cookies[:alluznet_lang]==nil || cookies[:alluznet_lang]==""
 		cookies[:alluznet_lang] = 'ru'
 		@lang='lang_ru'
@@ -35,8 +34,6 @@ class MainController < ApplicationController
   
   def getTexts
 	lang=params[:lang]
-	puts "------------------------"
-	puts lang
 	@texts=Langs.find(:all, :select => "tag,"+lang)
 	@jsont=""
 	for sub in @texts
@@ -50,7 +47,6 @@ class MainController < ApplicationController
 		end
 	end
 	@jsont=@jsont[0, @jsont.length-2]
-	puts @jsont
 	render :text => @jsont, :layout => false
   end
   
