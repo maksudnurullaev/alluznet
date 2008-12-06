@@ -26,8 +26,19 @@ class MainController < ApplicationController
     end
   end
   
-  #multilanguage
   
+  #addAnnouncment
+  def addAnnounce
+	
+  end
+  
+  
+  
+  
+  
+  
+  
+  #multilanguage
   def chage_language
 	if cookies[:alluznet_lang]==params[:lang]
 		data='false'
