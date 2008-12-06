@@ -1,3 +1,23 @@
+
+
+function setLang(menu)
+{
+	Ext.Ajax.request({
+        url: '/main/chage_language',
+        method: 'GET',
+        isLoading: true,
+        params: {lang: menu.id},
+        callback: function (t1, t2, t3){
+			if (t3.responseText=="true")
+			{
+				location.assign('/main');
+			}
+		}
+    });
+}
+
+
+
 function tree_add()
 {
     var login = new Ext.FormPanel({
@@ -124,13 +144,13 @@ function tree_edit(btn)
     var edit = new Ext.FormPanel({
 		labelWidth: 75,
 		autoHeight: true,
-                url: '/main/edit_node',
+		url: '/main/edit_node',
 		frame: true,
 		border: false,
 		defaultType: 'textfield',
 		items: [{
 			fieldLabel: 'Name',
-                        value: btn.id,
+            value: btn.id,
 			width: 180,
 			name: 'child_value',
                         allowBlank: false

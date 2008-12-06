@@ -1,3 +1,61 @@
+Ext.apply(Ext.form.VTypes, {
+    password: function(val, field) {
+        if (field.initialPassField) {
+            var pwd = Ext.getCmp(field.initialPassField);
+            return (val == pwd.getValue());
+        }
+        return true;
+    }, 
+    passwordText: 'Passwords do not match'
+});
+
+function tree_dbclick(tree)
+{
+	treepath = tree.id;
+	tabpanel = Ext.getCmp('main-tab-panel');
+    tabid = Ext.getCmp(tree.id + '-tab');
+    textid = tree.id   + '-tab-text';
+	if (!tabid)
+    {
+		tabpanel.add({
+			border: false,
+            title: tree.attributes.text,
+            id: tree.attributes.id + '-tab',
+            iconCls: tree.attributes.iconCls,
+            closable: true,
+			/*listeners:{
+				'activate': tab_activate
+			}*/
+        }).show();
+    }
+}
+
+var treetxt = {
+			title: Language.sections,
+			region: 'west',
+			xtype: 'treepanel',
+			margins: '0 0 0 5',
+            id: 'main-tree',
+			width: 200,
+			split: true,
+			minSize: 100,
+			maxSize: 300,
+			collapsible: true,
+			animate: true,
+            lines: true,
+			rootVisible: false,
+            useArrows: false, 
+			autoScroll: true,
+			root: new Ext.tree.AsyncTreeNode({
+				id: 'root'
+			}),
+            listeners: {
+				//'click': tree_click,
+				'dblclick': tree_dbclick
+			},
+			loader: treeloader
+		}; 
+
 var banner = {
 			height:  100,
 			region: 'north',
@@ -12,125 +70,9 @@ var banner = {
 				region: 'center',
 				border: true,
 				split: false
-				
-			},{
-				layout: 'border',
-				region: 'east',
-				
-				border: true,
-				split: false,
-				width: 75,
-				margins: '0 0 0 5',
-				layout: 'accordion',
-				layoutConfig: {
-                                    titleCollapse: false,
-                                    animate: true
-                                },
-                                collapseFirst: true,
-                                items: [{
-                        
-                                        border: false,
-					autoHeight: true,
-					title: 'Language',
-					margins: '0 0 0 5',
-					layout: 'table',
-					items: [{
-					    xtype: 'button',
-						text: '',
-						iconCls: 'icon-eng',
-						id: 'language-eng',
-						border: false,
-						width: 55
-					},{
-						xtype: 'button',
-						text: '',
-						iconCls: 'icon-rus',
-						id: 'language-rus',
-						border: false,
-						width: 55
-					},{
-						xtype: 'button',
-						text: '',
-						iconCls: 'icon-uzb',
-						id: 'language-uzb',
-						border: false,
-						width: 55
-                                        }]
-				},{
-					height: 65,
-					border: false,
-					title: 'Login',
-					autoHeight: true,
-					margins: '5 0 0 5',
-					layout: 'table',
-					items: [{
-					    xtype: 'button',
-						text: '',
-						iconCls: 'tree-2-1',
-						id: 'button-login',
-						border: false,
-						margins: '5 0 0 0',
-						width: 80,
-						listeners: {
-						    'click': show_login
-						}
-						    
-					},{
-					    xtype: 'button',
-						text: '',
-						iconCls: 'tree-1-2',
-						id: 'button-account',
-						margins: '5 0 0 0',
-						border: false,
-						width: 80,
-                                                listeners: {
-						    'click': show_Registration
-						}
-                                                
-					},{
-					    xtype: 'button',
-						text: '',
-						iconCls: 'tree-1-3',
-						id: 'button-request',
-						html: 'req',
-						border: false,
-						width: 55
-					
-					}]
-
-
-				}]
-			}]
-		
-		};
-		
-var tabpanel = {
-			title: 'Main tab panel',
-			xtype: 'tabpanel',
-			id: 'main-tab-panel',
-			region: 'center',
-			width: 150,
-			split: true,
-			margins: '0 5 0 0',
-                        tabPosition: 'top',
-			autoScroll: true,
-			enableTabScroll: true,
-			resizeTabs:true, // turn on tab resizing
-			minTabWidth: 120,
-			tabWidth:120,
-			activeTab: 0,
-                        border: false,
-			items: [{
-				html: 'HOME PAGE',
-				iconCls: 'tree-1-3',
-				title: 'Homa page',
-                                id: 'MainTab',
-                                border: true
-			}]
-                        
-                        
-
-		};
+			}],
+			bbar: stbar	
+			};
 		
 var footer = {
 			html: '<center><h1>Footer</h1></center>',
