@@ -253,11 +253,30 @@
 				text: Language.lang,
 					menu: new Ext.menu.Menu({
 						items: [{
-							text: Language.uz		
+							text: Language.uz,
+							id: 'uz',
+							name: 'uz',
+							listeners: {
+								'click': function(){
+									setLang(Ext.getCmp('uz'));
+									handleMouseClick('language:','uz');
+								}
+                            }
 						},{
-							text: Language.ru
+							text: Language.ru,
+							id: 'ru',
+							listeners: {
+								'click': function(){
+									setLang(Ext.getCmp('ru'));
+									handleMouseClick('language:','ru');
+								}
+                            }
 						},{
-							text: Language.en
+							text: Language.en,
+							id: 'en',
+							listeners: {
+								'click': setLang
+                            }
 						}]
 					})
 				}]
