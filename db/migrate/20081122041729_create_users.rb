@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration
 		user.column :email, :string, :null => false
 		user.column :salted_password, :string, :null => false
 		user.column :role_id, :integer, :default => 1
-                user.column :email_confirmed, :boolean, :default => false
+        user.column :email_confirmed, :boolean, :default => false
       end
   end
 
