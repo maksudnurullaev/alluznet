@@ -164,6 +164,7 @@ class MainController < ApplicationController
 			@ui[0].email_confirmed='t'
 			if @ui[0].save
 				data = "Ваша учетная запись активирован!"
+				
 			end
 		else
 			data = "Ваша учетная запись уже активирован!"
@@ -202,22 +203,26 @@ class MainController < ApplicationController
 	@index = params[:index]
 	@jsontxt = "["
 	if @path==''
-		@base = Category.find(:all , :conditions => [ "count = ?", @index])
+		@base = Category.find(:all , :select => "category, count, title_"+cookies[:alluznet_lang] , :conditions => [ "count = ?", @index])
 	else
-		@base = Category.find(:all , :conditions => [ "category LIKE ? AND count = ?", @path+"%",@index])
+		@base = Category.find(:all , :select => "category, count, title_"+cookies[:alluznet_lang] , :conditions => [ "category LIKE ? AND count = ?", @path+"%",@index])
 	end
 	for sub in @base 
 		@p = sub.category+".%"
-		@basesub = Category.find(:all , :conditions => [ "category LIKE ?", @p])
+		@basesub = Category.find(:all , :select => "category, count, title_"+cookies[:alluznet_lang] , :conditions => [ "category LIKE ?", @p])
 		if (@basesub.empty?)
 			@leaf = "true"
 		else
 			@leaf = "false"
 		end
-		@jsontxt += "{text: '" + sub.title+ "', 
-		id: '" + sub.category+ "',
-		leaf: " + @leaf + "                     
-		},\n"
+		if cookies[:alluznet_lang]=='uz'
+			@jsontxt += "{text: '" + sub.title_uz+ "', id: '" 
+		elsif cookies[:alluznet_lang]=='en'
+			@jsontxt += "{text: '" + sub.title_en+ "', id: '" 
+		else 
+			@jsontxt += "{text: '" + sub.title_ru+ "', id: '" 
+		end
+		@jsontxt += sub.category+ "', leaf: " + @leaf + "},\n"
 	end	
 	@jsontxt += "]"
 	render :text => @jsontxt

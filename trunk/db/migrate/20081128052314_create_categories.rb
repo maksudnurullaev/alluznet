@@ -3,7 +3,9 @@ class CreateCategories < ActiveRecord::Migration
     create_table :categories do |t|
 		t.column :category, :text, :limit => 512, :null => false
 		t.column :count, :integer, :null => false
-		t.column :title, :string, :limit => 512, :null => false
+		t.column :title_ru, :string, :limit => 128, :null => false
+		t.column :title_uz, :string, :limit => 128, :null => false
+		t.column :title_en, :string, :limit => 128, :null => false
     end
   end
 

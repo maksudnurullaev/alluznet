@@ -14,7 +14,9 @@ ActiveRecord::Schema.define(:version => 20081128052314) do
   create_table "categories", :force => true do |t|
     t.text    "category", :limit => 512, :null => false
     t.integer "count",                   :null => false
-    t.string  "title",    :limit => 512, :null => false
+    t.string  "title_ru", :limit => 128, :null => false
+    t.string  "title_uz", :limit => 128, :null => false
+    t.string  "title_en", :limit => 128, :null => false
   end
 
   create_table "hydra", :force => true do |t|
