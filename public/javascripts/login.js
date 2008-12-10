@@ -1,5 +1,115 @@
 var win, lid;
 
+
+function addAnnounce()
+{
+	var store = new Ext.data.SimpleStore({
+        fields: ['abbr', 'state'],
+		data : Language.types
+    });
+	/*
+	var ds = new Ext.data.Store({
+	proxy: new Ext.data.ScriptTagProxy({
+		url: '/main/'
+	}),
+	reader: new Ext.data.JsonReader({
+		root: 'topics',
+		totalProperty: 'totalCount',
+		id: 'post_id'
+	}, [
+		{name: 'title', mapping: 'topic_title'},
+		{name: 'topicId', mapping: 'topic_id'},
+		{name: 'author', mapping: 'author'},
+		{name: 'lastPost', mapping: 'post_time', type: 'date', dateFormat: 'timestamp'},
+		{name: 'excerpt', mapping: 'post_text'}
+	])
+    });
+	*/
+	var Announce = new Ext.FormPanel({
+		labelWidth: 110,
+		autoHeight: true,
+        id: 'forgot',
+		url: '/main/addAnnounce',
+		frame: true,
+		border: false,
+		defaultType: 'combo',
+		items: [{
+			fieldLabel: Language.type,
+			width: 250,
+			store: store,
+			displayField:'state',
+			mode: 'local',
+			typeAhead: true,
+	        triggerAction: 'all',
+	        forceSelection:true,
+			allowBlank:false
+		},{
+			fieldLabel: Language.category,
+			width: 250
+		},{
+			fieldLabel: Language.place,
+			width: 250
+		},{
+			fieldLabel: Language.ann_title,
+			width: 250,
+			xtype: 'textfield'
+		},{
+			fieldLabel: Language.text,
+			width: 350,
+			height: 160,
+			xtype: 'textarea',
+			listeners:{
+				'keypress': function (n){
+					
+				}
+			}
+		},{
+			fieldLabel: Language.price,
+			width: 100,
+			xtype: 'textfield'
+		},{
+			fieldLabel: Language.cur,
+			width: 100
+		},{
+			xtype: 'textfield',
+			fieldLabel: 'Telephone',
+			width: 150,
+			regex: '^((\+){0,1}91(\s){0,1}(\-){0,1}(\s){0,1}){0,1}98(\s){0,1}(\-){0,1}(\s){0,1}[1-9]{1}[0-9]{7}$',
+			maskRe:'^((\+){0,1}91(\s){0,1}(\-){0,1}(\s){0,1}){0,1}98(\s){0,1}(\-){0,1}(\s){0,1}[1-9]{1}[0-9]{7}$',
+			regexText: 'false',
+			
+			
+		}],
+		buttons: [/*{
+			text: Language.get,
+			handler: function() {
+                          
+			},{
+			text: Language.close,
+			listeners:{
+				'click': function (n){
+					win.close();
+				}
+			}
+		}*/]
+	});
+    win = new Ext.Window({
+                xtype: 'Form',
+                width: 500,
+                height: 500,
+                collapsible: true,
+                draggable: true,
+                modal: true,
+                onEsc: function(){win.close()},
+                resizable: false,
+                shadow: true,
+                shadowOffset: 7,
+                title: Language.addAnnounce,
+                items: [Announce]
+     });
+    win.show();
+}
+
 function forgot_password()
 {
 	var forgot = new Ext.FormPanel({

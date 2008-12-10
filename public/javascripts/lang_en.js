@@ -30,7 +30,16 @@
    must_pass: 'You must enter a password',
    enter_pass: 'Enter your <b>Password</b>',
    must_email: 'You must enter a valid email account',
-   min_pass: "Must be minimum 6 character"
+   min_pass: 'Must be minimum 6 character',
+   addAnnounce: 'Add announce',
+   type: 'Type',
+   category: 'Category',
+   place: 'Place',
+   types: [['sale','Sale'],['buy','Buying'],['job','Job'],['srvs','Services'],['rent','Rental'],['exch','Exchange'],['others','Others']],
+   ann_title: 'Title',
+   price: 'Price',
+   text: 'Text',
+   cur: 'Currency',
    
    
 }; 

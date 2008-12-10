@@ -33,11 +33,6 @@ class MainController < ApplicationController
   end
   
   
-  
-  
-  
-  
-  
   #multilanguage
   def chage_language
 	if cookies[:alluznet_lang]==params[:lang]
@@ -106,18 +101,22 @@ class MainController < ApplicationController
     
   def forgot
 	headers["Content-Type"] = "text/plain; charset=utf-8" 
-	@ui = User.find(:all , :conditions => ["email=?",params[:email]])
-	npas = generatePass
-	if !@ui.empty?
-		@ui[0].salted_password = hashed(npas)
-		if @ui[0].save
-			Msender.deliver_forgot_send(params[:email], "AllUzNet", npas)
-			data = { :success => 'true', :text => "Новая пароль отправлено на почту "+params[:email]+"!"}
+	if validate_email(params[:email])
+		@ui = User.find(:all , :conditions => ["email=?",params[:email]])
+		npas = generatePass
+		if !@ui.empty?
+			@ui[0].salted_password = hashed(npas)
+			if @ui[0].save
+				Msender.deliver_forgot_send(params[:email], "AllUzNet", npas)
+				data = { :success => 'true', :text => "Новая пароль отправлено на почту "+params[:email]+"!"}
+			else
+				data = { :failure => 'true', :text => "Не поличилось попрубуйте позже!"}
+			end
 		else
-			data = { :failure => 'true', :text => "Не поличилось попрубуйте позже!"}
+				data = { :failure => 'true', :text => "Такая пользователь не сущаствует!"}
 		end
-	else
-			data = { :failure => 'true', :text => "Такая пользователь не сущаствует!"}
+	else 
+		data = { :failure => 'true', :text => "Адрес электронного почты неправилно!"}
 	end
 	render :text => data.to_json, :layout => false
   end
@@ -164,7 +163,6 @@ class MainController < ApplicationController
 			@ui[0].email_confirmed='t'
 			if @ui[0].save
 				data = "Ваша учетная запись активирован!"
-				
 			end
 		else
 			data = "Ваша учетная запись уже активирован!"
@@ -177,24 +175,60 @@ class MainController < ApplicationController
 	
   def register
 	if request.get?
-	  @user=User.new
-      @user.email=params[:email]
-      @user.password=params[:login_pass]
-	  hs = 'http://localhost:3000/main/activate/?kod='+hashed(params[:login_pass])+'&ue='+params[:email]
-	  if @user.save
-		 Msender.deliver_send(@user.email, "AllUzNet", hs)
-		 data = { :success => 'true', :text => 'Спосибо за регистрация. Данные о подтверждении авторизации отправлены на почту '+@user.email}  
-      else
-         data = { :failure => 'true', :text => 'Регистрация не успешно'}  
-      end
-    else
-      data = { :failure => 'true', :text => 'Регистрация не успешно'}  
-    end
-    render :text => data.to_json, :layout => false
+		if validate_email(params[:email])
+			@user=User.new
+			@user.email=params[:email]
+			@user.password=params[:login_pass]
+			hs = 'http://localhost:3000/main/activate/?kod='+hashed(params[:login_pass])+'&ue='+params[:email]
+			if @user.save
+				Msender.deliver_send(@user.email, "AllUzNet", hs)
+				data = { :success => 'true', :text => 'Спосибо за регистрация. Данные о подтверждении авторизации отправлены на почту '+@user.email}  
+			else
+		         data = { :failure => 'true', :text => 'Регистрация не успешно'}  
+			end
+		else
+			data = { :failure => 'true', :text => 'Регистрация не успешно'}  
+		end
+	else
+		data = { :failure => 'true', :text => 'Регистрация не успешно'}  
+	end
+	render :text => data.to_json, :layout => false
   end
   
 
   #categories
+  
+  def getCats
+	headers["Content-Type"] = "text/plain; charset=utf-8" 
+    @path = params[:path]
+	@path = @path.chomp("root") 
+	@index = params[:index]
+	@jsontxt = "["
+	if @path==''
+		@base = Category.find(:all , :select => "category, count, title_"+cookies[:alluznet_lang] , :conditions => [ "count = ?", @index])
+	else
+		@base = Category.find(:all , :select => "category, count, title_"+cookies[:alluznet_lang] , :conditions => [ "category LIKE ? AND count = ?", @path+"%",@index])
+	end
+	for sub in @base 
+		@p = sub.category+".%"
+		@basesub = Category.find(:all , :select => "category, count, title_"+cookies[:alluznet_lang] , :conditions => [ "category LIKE ?", @p])
+		if (@basesub.empty?)
+			@leaf = "true"
+		else
+			@leaf = "false"
+		end
+		if cookies[:alluznet_lang]=='uz'
+			@jsontxt += "{text: '" + sub.title_uz+ "', id: '" 
+		elsif cookies[:alluznet_lang]=='en'
+			@jsontxt += "{text: '" + sub.title_en+ "', id: '" 
+		else 
+			@jsontxt += "{text: '" + sub.title_ru+ "', id: '" 
+		end
+		@jsontxt += sub.category+ "', leaf: " + @leaf + "},\n"
+	end	
+	@jsontxt += "]"
+	render :text => @jsontxt
+  end
   
   def getCategories
 	headers["Content-Type"] = "text/plain; charset=utf-8" 
@@ -233,6 +267,14 @@ class MainController < ApplicationController
   def hashed(string)
     Digest::SHA1.hexdigest(string)
   end
+  
+   def validate_email(email)
+		if email =~/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i #@/([a-z0-9_.-]+)@([a-z0-9-]+)\.([a-z.]+)/i 
+			return true  
+		else
+			return false
+		end  
+   end
   
   def generatePass
 	pass = ""
