@@ -42,20 +42,25 @@ function addAnnounce()
 			typeAhead: true,
 	        triggerAction: 'all',
 	        forceSelection:true,
-			allowBlank:false
+			allowBlank:false,
+			blankText: 'Введите'
 		},{
 			fieldLabel: Language.category,
+			allowBlank: false,
 			width: 250
 		},{
 			fieldLabel: Language.place,
+			allowBlank: false,
 			width: 250
 		},{
 			fieldLabel: Language.ann_title,
+			allowBlank: false,
 			width: 250,
 			xtype: 'textfield'
 		},{
 			fieldLabel: Language.text,
-			width: 350,
+			allowBlank: false,
+			width: 340,
 			height: 160,
 			xtype: 'textarea',
 			listeners:{
@@ -69,15 +74,27 @@ function addAnnounce()
 			xtype: 'textfield'
 		},{
 			fieldLabel: Language.cur,
-			width: 100
+			store: new Ext.data.SimpleStore({
+				fields: ['abbr', 'value'],
+				data: [['dollar','$'],['euro','\u20ac'],['sum','Сум']]
+			}),
+			mode: 'local',
+			displayField:'value',
+			width: 100,
+			triggerAction: 'all',
+			typeAhead: true,
+	        
+	        forceSelection:true,
+			//allowBlank:false,
+			//blankText: 'Введите'
 		},{
 			xtype: 'textfield',
 			fieldLabel: 'Telephone',
+			allowBlank: false,
 			width: 150,
 			regex: '^((\+){0,1}91(\s){0,1}(\-){0,1}(\s){0,1}){0,1}98(\s){0,1}(\-){0,1}(\s){0,1}[1-9]{1}[0-9]{7}$',
 			maskRe:'^((\+){0,1}91(\s){0,1}(\-){0,1}(\s){0,1}){0,1}98(\s){0,1}(\-){0,1}(\s){0,1}[1-9]{1}[0-9]{7}$',
 			regexText: 'false',
-			
 			
 		}],
 		buttons: [/*{
@@ -131,7 +148,6 @@ function forgot_password()
 		buttons: [{
 			text: Language.get,
 			handler: function() {
-                          //em = Ext.getCmp('email-text').getValue();
                           forgot.getForm().submit(
                           {
                             method: 'GET',
@@ -140,8 +156,7 @@ function forgot_password()
                                 Ext.Msg.alert('Info',t2.result.text);
                                 win.close();
                                 location.assign('/main');
-                                
-                            },
+                          },
                             failure: function(form,qaytdi){
                                 Ext.Msg.alert('Error',qaytdi.result.text);
                                 }
@@ -227,10 +242,9 @@ function show_login()
                             method: 'GET',
                             reset : true,
                             success : function(t1, t2){
-                                win.close();
-                                location.assign('/main');
-                                
-                            },
+								win.close();
+								location.assign(t2.result.put);
+							},
                             failure: function(form,qaytdi){
                                 Ext.Msg.alert('Error',qaytdi.result.text);
                                 }

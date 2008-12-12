@@ -65,7 +65,23 @@ class MainController < ApplicationController
   end
   
   
-#Users  
+#Users 
+  def update_data
+    headers["Content-Type"] = "text/plain; charset=utf-8"
+	ui = Uinfo.find(:all , :conditions => ["user_id=?",cookies[:alluznet].to_s])
+	if !ui.empty?
+		
+	else
+		ui = Uinfo.new
+		ui.user_id = cookies[:alluznet].to_s
+		ui.fname = params[:fname]
+		ui.lname = params[:lname]
+		ui.phone = params[:phone]
+		if ui.save
+	end
+	render :text => data, :layout => false
+  end
+ 
   def update_pass
     headers["Content-Type"] = "text/plain; charset=utf-8"
 	ui = User.find(:all , :conditions => ["id=?",cookies[:alluznet].to_s])
@@ -126,10 +142,15 @@ class MainController < ApplicationController
     @ui = User.find(:all , :conditions => ["email=?",params[:userlogin]])
     if !@ui.empty?
         if hashed(params[:userpass])==@ui[0].salted_password
-			if  @ui[0].email_confirmed
-	            @uname=@ui[0].email
-	            data = { :success => 'true', :text => 'Инфо'}
-	            cookies[:alluznet] = @ui[0]['id'].to_s
+			if  @ui[0].email_confirmed 
+				if @ui[0].role_id==1
+					@uname=@ui[0].email
+					data = { :success => 'true', :text => 'user', :put => '/main'}
+					cookies[:alluznet] = @ui[0]['id'].to_s
+				else
+					data = { :success => 'true', :text => 'HI', :put => '/hydra'}
+					cookies[:alluznet] = @ui[0]['id'].to_s
+				end
 			else
 				data = { :failure => 'true', :text => "Вы не подтверждали электронную почту!"}
 			end
