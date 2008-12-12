@@ -1,0 +1,816 @@
+
+
+Processing HydraController#index (for 127.0.0.1 at 2008-12-11 07:18:51) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"hydra"}
+Rendering hydra/index
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.01600 (100%) | DB: 0.00000 (0%) | 200 OK [http://localhost/hydra]
+
+
+Processing HydraController#index (for 127.0.0.1 at 2008-12-11 07:19:25) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"hydra"}
+Rendering hydra/index
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.01600 (100%) | DB: 0.00000 (0%) | 200 OK [http://localhost/hydra]
+
+
+Processing HydraController#index (for 127.0.0.1 at 2008-12-11 07:19:34) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"hydra"}
+Rendering hydra/index
+Completed in 0.01500 (66 reqs/sec) | Rendering: 0.01500 (100%) | DB: 0.00000 (0%) | 200 OK [http://localhost/hydra]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 07:19:37) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"root", "action"=>"getCategories", "controller"=>"main", "index"=>"0", "_dc"=>"1228961977093", "path"=>"root"}
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (count = '0') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'auto.%') [0m
+  [4;36;1mCategory Load (0.015000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built.%') [0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01500 (48%) | 200 OK [http://localhost/main/getCategories?_dc=1228961977093&index=0&path=root&node=root]
+
+
+Processing MainController#verUser (for 127.0.0.1 at 2008-12-11 07:19:45) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"verUser", "controller"=>"main", "_dc"=>"1228961985140", "email"=>"djbaxo@gmail.com"}
+  [4;35;1mUser Exists (0.000000)[0m   [0mSELECT "users".id FROM "users" WHERE (email = ('djbaxo@gmail.com')) LIMIT 1[0m
+Completed in 0.07800 (12 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/verUser?_dc=1228961985140&email=djbaxo%40gmail.com]
+
+
+Processing MainController#login (for 127.0.0.1 at 2008-12-11 07:19:48) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"login", "userpass"=>"5243561", "controller"=>"main", "userlogin"=>"djbaxo@gmail.com", "_dc"=>"1228961988531"}
+  [4;36;1mUser Load (0.015000)[0m   [0;1mSELECT * FROM "users" WHERE (email='djbaxo@gmail.com') [0m
+Completed in 0.12500 (8 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01500 (12%) | 200 OK [http://localhost/main/login?_dc=1228961988531&userlogin=djbaxo%40gmail.com&userpass=5243561]
+
+
+Processing HydraController#index (for 127.0.0.1 at 2008-12-11 07:19:49) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"hydra"}
+Rendering hydra/index
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/hydra]
+
+
+Processing HydraController#index (for 127.0.0.1 at 2008-12-11 07:21:09) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"hydra"}
+Rendering hydra/index
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.01500 (48%) | DB: 0.00000 (0%) | 200 OK [http://localhost/hydra]
+
+
+Processing HydraController#index (for 127.0.0.1 at 2008-12-11 07:22:06) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"hydra"}
+Rendering hydra/index
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/hydra]
+
+
+Processing HydraController#index (for 127.0.0.1 at 2008-12-11 07:22:31) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"hydra"}
+Rendering hydra/index
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/hydra]
+
+
+Processing HydraController#index (for 127.0.0.1 at 2008-12-11 07:23:09) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"hydra"}
+Rendering hydra/index
+Completed in 0.04600 (21 reqs/sec) | Rendering: 0.03100 (67%) | DB: 0.00000 (0%) | 200 OK [http://localhost/hydra]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 07:23:10) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"root", "action"=>"getCategories", "controller"=>"main", "index"=>"0", "_dc"=>"1228962190234", "path"=>"root"}
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (count = '0') [0m
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'auto.%') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built.%') [0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/getCategories?_dc=1228962190234&index=0&path=root&node=root]
+
+
+Processing HydraController#index (for 127.0.0.1 at 2008-12-11 07:25:26) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"hydra"}
+Rendering hydra/index
+Completed in 0.06300 (15 reqs/sec) | Rendering: 0.04700 (74%) | DB: 0.00000 (0%) | 200 OK [http://localhost/hydra]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 07:25:26) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"root", "action"=>"getCategories", "controller"=>"main", "index"=>"0", "_dc"=>"1228962326781", "path"=>"root"}
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (count = '0') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'auto.%') [0m
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built.%') [0m
+Completed in 0.04700 (21 reqs/sec) | Rendering: 0.01600 (34%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/getCategories?_dc=1228962326781&index=0&path=root&node=root]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 07:35:52) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"root", "action"=>"getCategories", "controller"=>"main", "index"=>"0", "_dc"=>"1228962952406", "path"=>"root"}
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (count = '0') [0m
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'auto.%') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built.%') [0m
+Completed in 0.01500 (66 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/getCategories?_dc=1228962952406&index=0&path=root&node=root]
+
+
+Processing MainController#verUser (for 127.0.0.1 at 2008-12-11 07:39:40) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"verUser", "controller"=>"main", "_dc"=>"1228963180156", "email"=>"djbaxo@yandex.ru"}
+  [4;36;1mUser Exists (0.000000)[0m   [0;1mSELECT "users".id FROM "users" WHERE (email = ('djbaxo@yandex.ru')) LIMIT 1[0m
+Completed in 0.04700 (21 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/verUser?_dc=1228963180156&email=djbaxo%40yandex.ru]
+
+
+Processing MainController#login (for 127.0.0.1 at 2008-12-11 07:39:43) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"login", "userpass"=>"5243561", "controller"=>"main", "userlogin"=>"djbaxo@yandex.ru", "_dc"=>"1228963183312"}
+  [4;35;1mUser Load (0.000000)[0m   [0mSELECT * FROM "users" WHERE (email='djbaxo@yandex.ru') [0m
+Cookie set: alluznet=2; path=/
+Completed in 0.06200 (16 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/login?_dc=1228963183312&userlogin=djbaxo%40yandex.ru&userpass=5243561]
+
+
+Processing MainController#index (for 127.0.0.1 at 2008-12-11 07:39:43) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"main"}
+  [4;36;1mUser Load (0.000000)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 2) [0m
+Rendering main/index
+Completed in 0.07800 (12 reqs/sec) | Rendering: 0.01500 (19%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 07:39:44) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"root", "action"=>"getCategories", "controller"=>"main", "index"=>"0", "_dc"=>"1228963184343", "path"=>"root"}
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (count = '0') [0m
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'auto.%') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built.%') [0m
+Completed in 0.06300 (15 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/getCategories?_dc=1228963184343&index=0&path=root&node=root]
+  [4;36;1mSQL (0.016000)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20081122041729)
+Migrating to CreateHydras (20081122143848)
+Migrating to CreateCategories (20081128052314)
+Migrating to CreateUinfos (20081211024454)
+  [4;36;1mSQL (0.000000)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.047000)[0m   [0mCREATE TABLE "uinfos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "fname" varchar(20), "lname" varchar(20), "phone" varchar(12)) [0m
+  [4;36;1mSQL (0.047000)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20081211024454')[0m
+  [4;35;1mSQL (0.000000)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000000)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPRAGMA index_list("categories")[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPRAGMA index_list("hydra")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPRAGMA index_list("uinfos")[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20081122041729)
+Migrating to CreateHydras (20081122143848)
+Migrating to CreateCategories (20081128052314)
+Migrating to CreateUinfos (20081211024454)
+  [4;36;1mSQL (0.000000)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.015000)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000000)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPRAGMA index_list("categories")[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPRAGMA index_list("hydra")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPRAGMA index_list("users")[0m
+
+
+Processing MainController#index (for 127.0.0.1 at 2008-12-11 19:54:47) [GET]
+  Session ID: 668322ba7b3f845df5fa73fdfdb9c994
+  Parameters: {"action"=>"index", "controller"=>"main"}
+Cookie set: alluznet_lang=ru; path=/
+Rendering main/index
+Completed in 0.07900 (12 reqs/sec) | Rendering: 0.06300 (79%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 19:54:53) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"root", "action"=>"getCategories", "controller"=>"main", "index"=>"0", "_dc"=>"1229007293281", "path"=>"root"}
+  [4;36;1mCategory Load (0.032000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (count = '0') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'auto.%') [0m
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built.%') [0m
+Completed in 0.09400 (10 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.03200 (34%) | 200 OK [http://localhost/main/getCategories?_dc=1229007293281&index=0&path=root&node=root]
+
+
+Processing MainController#verUser (for 127.0.0.1 at 2008-12-11 19:55:09) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"verUser", "controller"=>"main", "_dc"=>"1229007309078", "email"=>"djbaxo@gmail.com"}
+  [4;35;1mUser Exists (0.000000)[0m   [0mSELECT "users".id FROM "users" WHERE (email = ('djbaxo@gmail.com')) LIMIT 1[0m
+Completed in 0.17100 (5 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/verUser?_dc=1229007309078&email=djbaxo%40gmail.com]
+
+
+Processing MainController#login (for 127.0.0.1 at 2008-12-11 19:55:11) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"login", "userpass"=>"5243561", "controller"=>"main", "userlogin"=>"djbaxo@gmail.com", "_dc"=>"1229007311437"}
+  [4;36;1mUser Load (0.000000)[0m   [0;1mSELECT * FROM "users" WHERE (email='djbaxo@gmail.com') [0m
+Cookie set: alluznet=1; path=/
+Completed in 0.07800 (12 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/login?_dc=1229007311437&userlogin=djbaxo%40gmail.com&userpass=5243561]
+
+
+Processing HydraController#index (for 127.0.0.1 at 2008-12-11 19:55:11) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"hydra"}
+  [4;35;1mUser Load (0.000000)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering hydra/index
+Completed in 0.36000 (2 reqs/sec) | Rendering: 0.29700 (82%) | DB: 0.00000 (0%) | 200 OK [http://localhost/hydra]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 19:55:13) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"root", "action"=>"getCategories", "controller"=>"main", "index"=>"0", "_dc"=>"1229007313578", "path"=>"root"}
+  [4;36;1mCategory Load (0.016000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (count = '0') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'auto.%') [0m
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built.%') [0m
+Completed in 0.07800 (12 reqs/sec) | Rendering: 0.01600 (20%) | DB: 0.01600 (20%) | 200 OK [http://localhost/main/getCategories?_dc=1229007313578&index=0&path=root&node=root]
+
+
+Processing MainController#logout (for 127.0.0.1 at 2008-12-11 19:55:18) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"logout", "controller"=>"main"}
+Cookie set: alluznet=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT
+Redirected to http://localhost:3000/main
+Completed in 0.01600 (62 reqs/sec) | DB: 0.00000 (0%) | 302 Found [http://localhost/main/logout]
+
+
+Processing MainController#index (for 127.0.0.1 at 2008-12-11 19:55:18) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"main"}
+Rendering main/index
+Completed in 0.01500 (66 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 19:55:19) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"root", "action"=>"getCategories", "controller"=>"main", "index"=>"0", "_dc"=>"1229007319250", "path"=>"root"}
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (count = '0') [0m
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'auto.%') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built.%') [0m
+Completed in 0.03200 (31 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/getCategories?_dc=1229007319250&index=0&path=root&node=root]
+
+
+Processing MainController#verUser (for 127.0.0.1 at 2008-12-11 19:55:32) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"verUser", "controller"=>"main", "_dc"=>"1229007332218", "email"=>"djbaxo@gmail.com"}
+  [4;36;1mUser Exists (0.000000)[0m   [0;1mSELECT "users".id FROM "users" WHERE (email = ('djbaxo@gmail.com')) LIMIT 1[0m
+Completed in 0.06300 (15 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/verUser?_dc=1229007332218&email=djbaxo%40gmail.com]
+
+
+Processing MainController#login (for 127.0.0.1 at 2008-12-11 19:55:34) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"login", "userpass"=>"5243561", "controller"=>"main", "userlogin"=>"djbaxo@gmail.com", "_dc"=>"1229007334343"}
+  [4;35;1mUser Load (0.000000)[0m   [0mSELECT * FROM "users" WHERE (email='djbaxo@gmail.com') [0m
+Cookie set: alluznet=1; path=/
+Completed in 0.06200 (16 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/login?_dc=1229007334343&userlogin=djbaxo%40gmail.com&userpass=5243561]
+
+
+Processing HydraController#index (for 127.0.0.1 at 2008-12-11 19:55:34) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"hydra"}
+  [4;36;1mUser Load (0.000000)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering hydra/index
+Completed in 0.07800 (12 reqs/sec) | Rendering: 0.01600 (20%) | DB: 0.00000 (0%) | 200 OK [http://localhost/hydra]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 19:55:35) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"root", "action"=>"getCategories", "controller"=>"main", "index"=>"0", "_dc"=>"1229007335531", "path"=>"root"}
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (count = '0') [0m
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'auto.%') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built.%') [0m
+Completed in 0.04700 (21 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/getCategories?_dc=1229007335531&index=0&path=root&node=root]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 19:55:44) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"built", "action"=>"getCategories", "controller"=>"main", "index"=>"1", "_dc"=>"1229007344437", "path"=>"built"}
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built%' AND count = '1') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built.single.%') [0m
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/getCategories?_dc=1229007344437&index=1&path=built&node=built]
+
+
+Processing MainController#logout (for 127.0.0.1 at 2008-12-11 19:55:52) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"logout", "controller"=>"main"}
+Cookie set: alluznet=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT
+Redirected to http://localhost:3000/main
+Completed in 0.01600 (62 reqs/sec) | DB: 0.00000 (0%) | 302 Found [http://localhost/main/logout]
+
+
+Processing MainController#index (for 127.0.0.1 at 2008-12-11 19:55:53) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"main"}
+Rendering main/index
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 19:55:53) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"root", "action"=>"getCategories", "controller"=>"main", "index"=>"0", "_dc"=>"1229007353750", "path"=>"root"}
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (count = '0') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'auto.%') [0m
+  [4;36;1mCategory Load (0.016000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built.%') [0m
+Completed in 0.09400 (10 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01600 (17%) | 200 OK [http://localhost/main/getCategories?_dc=1229007353750&index=0&path=root&node=root]
+
+
+Processing MainController#verUser (for 127.0.0.1 at 2008-12-11 19:56:00) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"verUser", "controller"=>"main", "_dc"=>"1229007360656", "email"=>"djbaxo@yandex.ru"}
+  [4;35;1mUser Exists (0.000000)[0m   [0mSELECT "users".id FROM "users" WHERE (email = ('djbaxo@yandex.ru')) LIMIT 1[0m
+Completed in 0.06300 (15 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/verUser?_dc=1229007360656&email=djbaxo%40yandex.ru]
+
+
+Processing MainController#login (for 127.0.0.1 at 2008-12-11 19:56:02) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"login", "userpass"=>"5243561", "controller"=>"main", "userlogin"=>"djbaxo@yandex.ru", "_dc"=>"1229007362343"}
+  [4;36;1mUser Load (0.000000)[0m   [0;1mSELECT * FROM "users" WHERE (email='djbaxo@yandex.ru') [0m
+Cookie set: alluznet=2; path=/
+Completed in 0.06200 (16 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/login?_dc=1229007362343&userlogin=djbaxo%40yandex.ru&userpass=5243561]
+
+
+Processing MainController#index (for 127.0.0.1 at 2008-12-11 19:56:02) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"main"}
+  [4;35;1mUser Load (0.000000)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) [0m
+Rendering main/index
+Completed in 0.06200 (16 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 19:56:03) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"root", "action"=>"getCategories", "controller"=>"main", "index"=>"0", "_dc"=>"1229007363375", "path"=>"root"}
+  [4;36;1mCategory Load (0.015000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (count = '0') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'auto.%') [0m
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built.%') [0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01500 (48%) | 200 OK [http://localhost/main/getCategories?_dc=1229007363375&index=0&path=root&node=root]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 19:56:12) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"built", "action"=>"getCategories", "controller"=>"main", "index"=>"1", "_dc"=>"1229007371968", "path"=>"built"}
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built%' AND count = '1') [0m
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built.single.%') [0m
+Completed in 0.01500 (66 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/getCategories?_dc=1229007371968&index=1&path=built&node=built]
+
+
+Processing MainController#logout (for 127.0.0.1 at 2008-12-11 19:56:16) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"logout", "controller"=>"main"}
+Cookie set: alluznet=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT
+Redirected to http://localhost:3000/main
+Completed in 0.00010 (10000 reqs/sec) | DB: 0.00000 (0%) | 302 Found [http://localhost/main/logout]
+
+
+Processing MainController#index (for 127.0.0.1 at 2008-12-11 19:56:16) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"main"}
+Rendering main/index
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.01500 (48%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 19:56:17) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"root", "action"=>"getCategories", "controller"=>"main", "index"=>"0", "_dc"=>"1229007377375", "path"=>"root"}
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (count = '0') [0m
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'auto.%') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built.%') [0m
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/getCategories?_dc=1229007377375&index=0&path=root&node=root]
+
+
+Processing MainController#chage_language (for 127.0.0.1 at 2008-12-11 19:56:25) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"chage_language", "controller"=>"main", "lang"=>"uz", "_dc"=>"1229007385343"}
+Cookie set: alluznet_lang=uz; path=/
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/chage_language?_dc=1229007385343&lang=uz]
+
+
+Processing MainController#index (for 127.0.0.1 at 2008-12-11 19:56:25) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"main"}
+Rendering main/index
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 19:56:26) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"root", "action"=>"getCategories", "controller"=>"main", "index"=>"0", "_dc"=>"1229007386453", "path"=>"root"}
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_uz FROM "categories" WHERE (count = '0') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_uz FROM "categories" WHERE (category LIKE 'auto.%') [0m
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_uz FROM "categories" WHERE (category LIKE 'built.%') [0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/getCategories?_dc=1229007386453&index=0&path=root&node=root]
+
+
+Processing MainController#chage_language (for 127.0.0.1 at 2008-12-11 19:56:29) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"chage_language", "controller"=>"main", "lang"=>"ru", "_dc"=>"1229007389484"}
+Cookie set: alluznet_lang=ru; path=/
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/chage_language?_dc=1229007389484&lang=ru]
+
+
+Processing MainController#index (for 127.0.0.1 at 2008-12-11 19:56:29) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"main"}
+Rendering main/index
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 19:56:30) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"root", "action"=>"getCategories", "controller"=>"main", "index"=>"0", "_dc"=>"1229007390390", "path"=>"root"}
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (count = '0') [0m
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'auto.%') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built.%') [0m
+Completed in 0.03200 (31 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/getCategories?_dc=1229007390390&index=0&path=root&node=root]
+
+
+Processing MainController#chage_language (for 127.0.0.1 at 2008-12-11 19:56:32) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"chage_language", "controller"=>"main", "lang"=>"en", "_dc"=>"1229007392234"}
+Cookie set: alluznet_lang=en; path=/
+Completed in 0.01500 (66 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/chage_language?_dc=1229007392234&lang=en]
+
+
+Processing MainController#index (for 127.0.0.1 at 2008-12-11 19:56:32) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"main"}
+Rendering main/index
+Completed in 0.01500 (66 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 19:56:33) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"root", "action"=>"getCategories", "controller"=>"main", "index"=>"0", "_dc"=>"1229007393265", "path"=>"root"}
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_en FROM "categories" WHERE (count = '0') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_en FROM "categories" WHERE (category LIKE 'auto.%') [0m
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_en FROM "categories" WHERE (category LIKE 'built.%') [0m
+Completed in 0.04700 (21 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/getCategories?_dc=1229007393265&index=0&path=root&node=root]
+
+
+Processing MainController#chage_language (for 127.0.0.1 at 2008-12-11 19:56:35) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"chage_language", "controller"=>"main", "lang"=>"uz", "_dc"=>"1229007395578"}
+Cookie set: alluznet_lang=uz; path=/
+Completed in 0.01500 (66 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/chage_language?_dc=1229007395578&lang=uz]
+
+
+Processing MainController#index (for 127.0.0.1 at 2008-12-11 19:56:36) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"main"}
+Rendering main/index
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 19:56:36) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"root", "action"=>"getCategories", "controller"=>"main", "index"=>"0", "_dc"=>"1229007396625", "path"=>"root"}
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_uz FROM "categories" WHERE (count = '0') [0m
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_uz FROM "categories" WHERE (category LIKE 'auto.%') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_uz FROM "categories" WHERE (category LIKE 'built.%') [0m
+Completed in 0.01500 (66 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/getCategories?_dc=1229007396625&index=0&path=root&node=root]
+
+
+Processing MainController#chage_language (for 127.0.0.1 at 2008-12-11 19:56:40) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"chage_language", "controller"=>"main", "lang"=>"ru", "_dc"=>"1229007400687"}
+Cookie set: alluznet_lang=ru; path=/
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/chage_language?_dc=1229007400687&lang=ru]
+
+
+Processing MainController#index (for 127.0.0.1 at 2008-12-11 19:56:40) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"main"}
+Rendering main/index
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 19:56:41) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"root", "action"=>"getCategories", "controller"=>"main", "index"=>"0", "_dc"=>"1229007401562", "path"=>"root"}
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (count = '0') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'auto.%') [0m
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built.%') [0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/getCategories?_dc=1229007401562&index=0&path=root&node=root]
+
+
+Processing MainController#verUser (for 127.0.0.1 at 2008-12-11 19:56:47) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"verUser", "controller"=>"main", "_dc"=>"1229007407687", "email"=>"djbaxo@yandex.ru"}
+  [4;35;1mUser Exists (0.000000)[0m   [0mSELECT "users".id FROM "users" WHERE (email = ('djbaxo@yandex.ru')) LIMIT 1[0m
+Completed in 0.07800 (12 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/verUser?_dc=1229007407687&email=djbaxo%40yandex.ru]
+
+
+Processing MainController#login (for 127.0.0.1 at 2008-12-11 19:56:49) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"login", "userpass"=>"5243561", "controller"=>"main", "userlogin"=>"djbaxo@yandex.ru", "_dc"=>"1229007409593"}
+  [4;36;1mUser Load (0.015000)[0m   [0;1mSELECT * FROM "users" WHERE (email='djbaxo@yandex.ru') [0m
+Cookie set: alluznet=2; path=/
+Completed in 0.06200 (16 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01500 (24%) | 200 OK [http://localhost/main/login?_dc=1229007409593&userlogin=djbaxo%40yandex.ru&userpass=5243561]
+
+
+Processing MainController#index (for 127.0.0.1 at 2008-12-11 19:56:50) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"main"}
+  [4;35;1mUser Load (0.000000)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) [0m
+Rendering main/index
+Completed in 0.06200 (16 reqs/sec) | Rendering: 0.01500 (24%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 19:56:51) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"root", "action"=>"getCategories", "controller"=>"main", "index"=>"0", "_dc"=>"1229007411015", "path"=>"root"}
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (count = '0') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'auto.%') [0m
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built.%') [0m
+Completed in 0.04700 (21 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/getCategories?_dc=1229007411015&index=0&path=root&node=root]
+
+
+Processing MainController#index (for 127.0.0.1 at 2008-12-11 19:58:47) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"main"}
+  [4;35;1mUser Load (0.000000)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) [0m
+Rendering main/index
+Completed in 0.06200 (16 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 19:58:48) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"root", "action"=>"getCategories", "controller"=>"main", "index"=>"0", "_dc"=>"1229007528218", "path"=>"root"}
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (count = '0') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'auto.%') [0m
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built.%') [0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/getCategories?_dc=1229007528218&index=0&path=root&node=root]
+
+
+Processing MainController#logout (for 127.0.0.1 at 2008-12-11 19:58:50) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"logout", "controller"=>"main"}
+Cookie set: alluznet=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT
+Redirected to http://localhost:3000/main
+Completed in 0.00010 (10000 reqs/sec) | DB: 0.00000 (0%) | 302 Found [http://localhost/main/logout]
+
+
+Processing MainController#index (for 127.0.0.1 at 2008-12-11 19:58:50) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"main"}
+Rendering main/index
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 19:58:51) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"root", "action"=>"getCategories", "controller"=>"main", "index"=>"0", "_dc"=>"1229007531468", "path"=>"root"}
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (count = '0') [0m
+  [4;36;1mCategory Load (0.016000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'auto.%') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built.%') [0m
+Completed in 0.06300 (15 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01600 (25%) | 200 OK [http://localhost/main/getCategories?_dc=1229007531468&index=0&path=root&node=root]
+
+
+Processing MainController#verUser (for 127.0.0.1 at 2008-12-11 19:59:09) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"verUser", "controller"=>"main", "_dc"=>"1229007549343", "email"=>"djbaxo@gmail.com"}
+  [4;36;1mUser Exists (0.000000)[0m   [0;1mSELECT "users".id FROM "users" WHERE (email = ('djbaxo@gmail.com')) LIMIT 1[0m
+Completed in 0.07800 (12 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/verUser?_dc=1229007549343&email=djbaxo%40gmail.com]
+
+
+Processing MainController#login (for 127.0.0.1 at 2008-12-11 19:59:11) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"login", "userpass"=>"5243561", "controller"=>"main", "userlogin"=>"djbaxo@gmail.com", "_dc"=>"1229007551593"}
+  [4;35;1mUser Load (0.000000)[0m   [0mSELECT * FROM "users" WHERE (email='djbaxo@gmail.com') [0m
+Cookie set: alluznet=1; path=/
+Completed in 0.06200 (16 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/login?_dc=1229007551593&userlogin=djbaxo%40gmail.com&userpass=5243561]
+
+
+Processing HydraController#index (for 127.0.0.1 at 2008-12-11 19:59:12) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"hydra"}
+  [4;36;1mUser Load (0.000000)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering hydra/index
+Completed in 0.06200 (16 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/hydra]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 19:59:12) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"root", "action"=>"getCategories", "controller"=>"main", "index"=>"0", "_dc"=>"1229007552875", "path"=>"root"}
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (count = '0') [0m
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'auto.%') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built.%') [0m
+Completed in 0.03200 (31 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/getCategories?_dc=1229007552875&index=0&path=root&node=root]
+
+
+Processing MainController#logout (for 127.0.0.1 at 2008-12-11 19:59:32) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"logout", "controller"=>"main"}
+Cookie set: alluznet=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT
+Redirected to http://localhost:3000/main
+Completed in 0.00010 (10000 reqs/sec) | DB: 0.00000 (0%) | 302 Found [http://localhost/main/logout]
+
+
+Processing MainController#index (for 127.0.0.1 at 2008-12-11 19:59:32) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"main"}
+Rendering main/index
+Completed in 0.01500 (66 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 19:59:33) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"root", "action"=>"getCategories", "controller"=>"main", "index"=>"0", "_dc"=>"1229007573546", "path"=>"root"}
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (count = '0') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'auto.%') [0m
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built.%') [0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/getCategories?_dc=1229007573546&index=0&path=root&node=root]
+
+
+Processing MainController#verUser (for 127.0.0.1 at 2008-12-11 19:59:39) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"verUser", "controller"=>"main", "_dc"=>"1229007579687", "email"=>"djbaxo@yandex.ru"}
+  [4;35;1mUser Exists (0.000000)[0m   [0mSELECT "users".id FROM "users" WHERE (email = ('djbaxo@yandex.ru')) LIMIT 1[0m
+Completed in 0.06200 (16 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/verUser?_dc=1229007579687&email=djbaxo%40yandex.ru]
+
+
+Processing MainController#login (for 127.0.0.1 at 2008-12-11 19:59:41) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"login", "userpass"=>"5243561", "controller"=>"main", "userlogin"=>"djbaxo@yandex.ru", "_dc"=>"1229007581593"}
+  [4;36;1mUser Load (0.000000)[0m   [0;1mSELECT * FROM "users" WHERE (email='djbaxo@yandex.ru') [0m
+Cookie set: alluznet=2; path=/
+Completed in 0.09400 (10 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/login?_dc=1229007581593&userlogin=djbaxo%40yandex.ru&userpass=5243561]
+
+
+Processing MainController#index (for 127.0.0.1 at 2008-12-11 19:59:42) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"main"}
+  [4;35;1mUser Load (0.000000)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) [0m
+Rendering main/index
+Completed in 0.06300 (15 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 19:59:43) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"root", "action"=>"getCategories", "controller"=>"main", "index"=>"0", "_dc"=>"1229007583000", "path"=>"root"}
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (count = '0') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'auto.%') [0m
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built.%') [0m
+Completed in 0.04700 (21 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/getCategories?_dc=1229007583000&index=0&path=root&node=root]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 19:59:54) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"auto", "action"=>"getCategories", "controller"=>"main", "index"=>"1", "_dc"=>"1229007594343", "path"=>"auto"}
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'auto%' AND count = '1') [0m
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'auto.daewoo.%') [0m
+Completed in 0.01500 (66 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/getCategories?_dc=1229007594343&index=1&path=auto&node=auto]
+
+
+Processing MainController#update_pass (for 127.0.0.1 at 2008-12-11 20:00:03) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"op"=>"", "np"=>"", "action"=>"update_pass", "controller"=>"main", "_dc"=>"1229007603203"}
+  [4;35;1mUser Load (0.000000)[0m   [0mSELECT * FROM "users" WHERE (id='2') [0m
+Completed in 0.06300 (15 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/update_pass?_dc=1229007603203&op=&np=]
+  [4;36;1mSQL (0.000000)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20081122041729)
+Migrating to CreateHydras (20081122143848)
+Migrating to CreateCategories (20081128052314)
+Migrating to CreateUinfos (20081211150438)
+  [4;36;1mSQL (0.000000)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.062000)[0m   [0mCREATE TABLE "uinfos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "fname" varchar(20), "lname" varchar(20), "phone" varchar(12)) [0m
+  [4;36;1mSQL (0.078000)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20081211150438')[0m
+  [4;35;1mSQL (0.000000)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000000)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPRAGMA index_list("categories")[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPRAGMA index_list("hydra")[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mPRAGMA index_list("uinfos")[0m
+  [4;35;1mSQL (0.000000)[0m   [0mPRAGMA index_list("users")[0m
+
+
+Processing MainController#logout (for 127.0.0.1 at 2008-12-11 20:17:35) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"logout", "controller"=>"main"}
+Cookie set: alluznet=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT
+Redirected to http://localhost:3000/main
+Completed in 0.00010 (10000 reqs/sec) | DB: 0.00000 (0%) | 302 Found [http://localhost/main/logout]
+
+
+Processing MainController#index (for 127.0.0.1 at 2008-12-11 20:17:35) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"action"=>"index", "controller"=>"main"}
+Rendering main/index
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.03100 (100%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main]
+
+
+Processing MainController#getCategories (for 127.0.0.1 at 2008-12-11 20:17:36) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo
+SGFzaHsABjoKQHVzZWR7AA==--491dd24163c41592b8ad3aadbb537b8ed8435eaf
+  Parameters: {"node"=>"root", "action"=>"getCategories", "controller"=>"main", "index"=>"0", "_dc"=>"1229008656062", "path"=>"root"}
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (count = '0') [0m
+  [4;35;1mCategory Load (0.000000)[0m   [0mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'auto.%') [0m
+  [4;36;1mCategory Load (0.000000)[0m   [0;1mSELECT category, count, title_ru FROM "categories" WHERE (category LIKE 'built.%') [0m
+Completed in 0.03200 (31 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/main/getCategories?_dc=1229008656062&index=0&path=root&node=root]

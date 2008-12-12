@@ -1,7 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.connect '', :controller => "main", :action => "index"
-  map.connect 'register', :controller => "main", :action => "register"
-  
+  map.connect '', :controller  => 'hydra', :action => 'index'
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

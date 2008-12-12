@@ -24,6 +24,30 @@ var loadFn = function(btn, statusBar, o,n){
 			btn.enable();
         }).defer(2000);
     };
+var save_data = function(btn, statusBar, fn,ln,ph){
+        btn = Ext.getCmp(btn);
+        statusBar = Ext.getCmp(statusBar);
+        btn.disable();
+        statusBar.showBusy();
+		var stat='';
+		Ext.Ajax.request({
+        url: '/main/update_data',
+        method: 'GET',
+        isLoading: true,
+		params: {fname: fn, lname: ln, phone: ph},
+		callback: function (t1, t2, t3){
+            stat=t3.responseText;
+			}
+		}); 
+        (function(){
+			statusBar.setStatus({
+				text: stat,
+				iconCls: 'ok-icon',
+				clear: false
+			});
+			btn.enable();
+        }).defer(2000);
+    };
 
 Ext.apply(Ext.form.VTypes, {
      password : function(val, field) {
