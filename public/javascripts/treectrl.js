@@ -1,20 +1,4 @@
-//Функция для изменение язика
 
-function setLang(menu)
-{
-	Ext.Ajax.request({
-        url: '/main/chage_language',
-        method: 'GET',
-        isLoading: true,
-        params: {lang: menu.id},
-        callback: function (t1, t2, t3){
-			if (t3.responseText=="true")
-			{
-				location.assign('/main');
-			}
-		}
-    });
-}
 
 
 function tree_add()
