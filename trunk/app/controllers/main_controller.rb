@@ -1,6 +1,10 @@
+require 'rss/1.0'
+require 'rss/2.0'
+require 'open-uri'
+
 class MainController < ApplicationController
   def index
-  
+	
 	if cookies[:alluznet_lang]==nil || cookies[:alluznet_lang]==""
 		cookies[:alluznet_lang] = 'ru'
 		@lang='lang_ru'
@@ -20,10 +24,40 @@ class MainController < ApplicationController
     @cookie = false
 	@uid = cookies[:alluznet].to_s
     if (!@uid.empty?)
-       @cookie = true
-       @n = User.find(@uid)
-       @uname = @n['email']
+		@cookie = true
+		@n = User.find(@uid)
+		@uname = @n['email']
+		@uinfo = Uinfo.find(:all , :conditions => ["user_id=?",cookies[:alluznet].to_s])
+		if !@uinfo.empty?
+			@fname=@uinfo[0].fname
+			@lname=@uinfo[0].lname
+			@phone=@uinfo[0].phone
+	    end
     end
+	begin
+		source = "http://bank.uz/scripts/rss_valute?valute=2"
+		content = "" 
+		open(source) do |s| content = s.read end
+		rss = RSS::Parser.parse(content, false)
+		@usa=rss.items[0].description
+		source = "http://bank.uz/scripts/rss_valute?valute=5"
+		content = "" 
+		open(source) do |s| content = s.read end
+		rss = RSS::Parser.parse(content, false)
+		@euro=rss.items[0].description
+		source = "http://bank.uz/scripts/rss_valute?valute=11"
+		content = "" 
+		open(source) do |s| content = s.read end
+		rss = RSS::Parser.parse(content, false)
+		@rubl=rss.items[0].description
+	rescue
+		@usa="'*'"
+		@euro="'*'"
+		puts 'Error connect to http://bank.uz'
+	ensure
+		
+	end
+
   end
   
   
@@ -70,14 +104,25 @@ class MainController < ApplicationController
     headers["Content-Type"] = "text/plain; charset=utf-8"
 	ui = Uinfo.find(:all , :conditions => ["user_id=?",cookies[:alluznet].to_s])
 	if !ui.empty?
-		
+		ui[0].fname = params[:fname]
+		ui[0].lname = params[:lname]
+		ui[0].phone = params[:phone]
+		if ui[0].save 
+			data = "Успешно сохранен!"
+		else
+			data = "Не получилось, повторите позже!"
+		end
 	else
 		ui = Uinfo.new
 		ui.user_id = cookies[:alluznet].to_s
 		ui.fname = params[:fname]
 		ui.lname = params[:lname]
 		ui.phone = params[:phone]
-		if ui.save
+		if ui.save 
+			data = "Успешно сохранен!"
+		else
+			data = "Не получилось, повторите позже!"
+		end
 	end
 	render :text => data, :layout => false
   end
@@ -102,10 +147,6 @@ class MainController < ApplicationController
 	render :text => data, :layout => false
   end
   
-  def cabinet
-  
-  end
-    
   def news
 	
   end
@@ -196,20 +237,24 @@ class MainController < ApplicationController
 	
   def register
 	if request.get?
-		if validate_email(params[:email])
-			@user=User.new
-			@user.email=params[:email]
-			@user.password=params[:login_pass]
-			hs = 'http://localhost:3000/main/activate/?kod='+hashed(params[:login_pass])+'&ue='+params[:email]
-			if @user.save
-				Msender.deliver_send(@user.email, "AllUzNet", hs)
-				data = { :success => 'true', :text => 'Спосибо за регистрация. Данные о подтверждении авторизации отправлены на почту '+@user.email}  
-			else
-		         data = { :failure => 'true', :text => 'Регистрация не успешно'}  
-			end
+		@temp=User.find(:all, :conditions => [ "email = ?", params[:email]])
+		if !@temp.empty?
+			data = { :failure => 'true', :text => 'Такая пользователь существует!'} 
+		elsif validate_email(params[:email])
+				@user=User.new
+				@user.email=params[:email]
+				@user.password=params[:login_pass]
+				hs = 'http://localhost:3000/main/activate/?kod='+hashed(params[:login_pass])+'&ue='+params[:email]
+				if @user.save
+					Msender.deliver_send(@user.email, "AllUzNet", hs)
+					data = { :success => 'true', :text => 'Спосибо за регистрация. Данные о подтверждении авторизации отправлены на почту '+@user.email}  
+				else
+			         data = { :failure => 'true', :text => 'Регистрация не успешно'}  
+				end
 		else
-			data = { :failure => 'true', :text => 'Регистрация не успешно'}  
+				data = { :failure => 'true', :text => 'Регистрация не успешно'}  
 		end
+			
 	else
 		data = { :failure => 'true', :text => 'Регистрация не успешно'}  
 	end
@@ -221,34 +266,22 @@ class MainController < ApplicationController
   
   def getCats
 	headers["Content-Type"] = "text/plain; charset=utf-8" 
-    @path = params[:path]
-	@path = @path.chomp("root") 
-	@index = params[:index]
-	@jsontxt = "["
-	if @path==''
-		@base = Category.find(:all , :select => "category, count, title_"+cookies[:alluznet_lang] , :conditions => [ "count = ?", @index])
-	else
-		@base = Category.find(:all , :select => "category, count, title_"+cookies[:alluznet_lang] , :conditions => [ "category LIKE ? AND count = ?", @path+"%",@index])
+	@base = Category.find(:all , :select => "id, category, title_"+cookies[:alluznet_lang])
+	@arr="{"
+	@arr += "rows: ["
+	if !@base.empty?
+		for sub in @base
+			if cookies[:alluznet_lang]=='uz'
+				@arr += "{name:' " + sub.category + "', value:'" + sub.title_uz + "'},"
+			elsif cookies[:alluznet_lang]=='ru'
+				@arr += "{name: '" + sub.category + "', value:'" + sub.title_ru + "'},"
+			else 
+				@arr += "{name: '" + sub.category + "', value:'" + sub.title_en + "'},"
+			end
+		end
 	end
-	for sub in @base 
-		@p = sub.category+".%"
-		@basesub = Category.find(:all , :select => "category, count, title_"+cookies[:alluznet_lang] , :conditions => [ "category LIKE ?", @p])
-		if (@basesub.empty?)
-			@leaf = "true"
-		else
-			@leaf = "false"
-		end
-		if cookies[:alluznet_lang]=='uz'
-			@jsontxt += "{text: '" + sub.title_uz+ "', id: '" 
-		elsif cookies[:alluznet_lang]=='en'
-			@jsontxt += "{text: '" + sub.title_en+ "', id: '" 
-		else 
-			@jsontxt += "{text: '" + sub.title_ru+ "', id: '" 
-		end
-		@jsontxt += sub.category+ "', leaf: " + @leaf + "},\n"
-	end	
-	@jsontxt += "]"
-	render :text => @jsontxt
+	@arr += "]}"
+	render :text => @arr
   end
   
   def getCategories
@@ -262,7 +295,7 @@ class MainController < ApplicationController
 	else
 		@base = Category.find(:all , :select => "category, count, title_"+cookies[:alluznet_lang] , :conditions => [ "category LIKE ? AND count = ?", @path+"%",@index])
 	end
-	for sub in @base 
+	for sub in @base
 		@p = sub.category+".%"
 		@basesub = Category.find(:all , :select => "category, count, title_"+cookies[:alluznet_lang] , :conditions => [ "category LIKE ?", @p])
 		if (@basesub.empty?)

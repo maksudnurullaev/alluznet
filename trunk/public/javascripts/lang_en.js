@@ -40,6 +40,10 @@
    price: 'Price',
    text: 'Text',
    cur: 'Currency',
+   fname: 'First name',
+   lname: 'Last name',
+   phone: 'Telephone number',
+   region: 'Region',
    
    
 }; 

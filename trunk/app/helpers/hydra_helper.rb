@@ -1,0 +1,2 @@
+module HydraHelper
+end
