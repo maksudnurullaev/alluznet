@@ -6,15 +6,18 @@ class HydraController < ApplicationController
 	else
 		@lang='lang_'+cookies[:alluznet_lang]
 	end
-	@title='Главная страница AllUz.Net'
+	@title='HYDRA'
 	@cookie = false
 	@uid = cookies[:alluznet].to_s
-    if (!@uid.empty?)
+    if !@uid.empty?
        @cookie = true
        @n = User.find(@uid)
-       @uname = @n['email']
+	   if @n.role_id!=0
+		redirect_to "/main"
+	   end
+    else
+		redirect_to "/main"
     end
-
   end
 
 end

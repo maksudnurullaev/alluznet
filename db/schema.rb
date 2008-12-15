@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081211150438) do
+ActiveRecord::Schema.define(:version => 20081215031448) do
 
   create_table "categories", :force => true do |t|
     t.text    "category", :limit => 512, :null => false
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(:version => 20081211150438) do
     t.text    "tree",  :limit => 512,  :null => false
     t.integer "count",                 :null => false
     t.string  "title", :limit => 1024, :null => false
+  end
+
+  create_table "posts", :force => true do |t|
+    t.text    "title",    :limit => 256, :null => false
+    t.text    "text",     :limit => 600, :null => false
+    t.integer "price"
+    t.string  "currency"
+    t.string  "region",   :limit => 128, :null => false
+    t.integer "user_id"
   end
 
   create_table "uinfos", :force => true do |t|

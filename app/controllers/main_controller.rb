@@ -51,8 +51,8 @@ class MainController < ApplicationController
 		rss = RSS::Parser.parse(content, false)
 		@rubl=rss.items[0].description
 	rescue
-		@usa="'*'"
-		@euro="'*'"
+		@usa="*"
+		@euro="*"
 		puts 'Error connect to http://bank.uz'
 	ensure
 		

@@ -1,4 +1,3 @@
-//var win, lid;
 function ShowWindow(witem, wtitle, wwidth, wheight)
 {
 	win = new Ext.Window({
@@ -20,7 +19,7 @@ function ShowWindow(witem, wtitle, wwidth, wheight)
 function addAnnounce()
 {
 	var Announce = new Ext.FormPanel({
-		labelWidth: 110,
+		labelWidth: 70,
 		autoHeight: true,
         id: 'forgot',
 		url: '/main/addAnnounce',
@@ -55,6 +54,7 @@ function addAnnounce()
             valueField: 'name',
             forceSelection: true,
             typeAhead: true,
+			allowBlank:false,
 			editable: false,
             store: new Ext.data.JsonStore({
                 autoLoad: true,
@@ -63,7 +63,7 @@ function addAnnounce()
 				fields:['name', 'value']
 			})
 	    },{
-			fieldLabel: Language.region,
+			fieldLabel: Language.reg,
 			name: 'region',
 			xtype: 'combo',
 			width: 250,
@@ -88,8 +88,10 @@ function addAnnounce()
 			fieldLabel: Language.text,
 			name: 'text',
 			allowBlank: false,
-			width: 340,
+			width: 330,
+			maxLengthText: 'Максимум 600 символов',
 			height: 160,
+			maxLength: 600,
 			xtype: 'textarea',
 			listeners:{
 				'keypress': function (n){
@@ -154,7 +156,7 @@ function addAnnounce()
 				}
 		}]
 	});
-	ShowWindow(Announce, Language.addAnnounce, 500, 500);
+	ShowWindow(Announce, Language.addAnnounce, 450, 380);
 }
 function forgot_password()
 {
