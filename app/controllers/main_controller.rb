@@ -1,6 +1,8 @@
 require 'rss/1.0'
 require 'rss/2.0'
 require 'open-uri'
+require 'date'
+
 
 class MainController < ApplicationController
   def index
@@ -60,10 +62,41 @@ class MainController < ApplicationController
 
   end
   
-  
+  def title(wordCount)
+	text.split[0..(wordCount-1)].join(" ") +(text.split.size > wordCount ? "..." : "")
+  end
   #addAnnouncment
   def addAnnounce
-	
+	@alltext=params[:title]+"~"+params[:title]
+	@price=params[:price]
+	@currency=params[:curr]
+	reg=Region.find(:all, :select => "id", :conditions => ["region_"+cookies[:alluznet_lang]+"=?",params[:region]])
+	if !reg.empty?
+		@reg_id=reg[0].id.to_s
+		@user_id=cookies[:alluznet]
+		
+	else
+		
+	end
+	puts Date.today.to_s
+	puts "type--------------------"
+	puts params[:type]
+	puts "category--------------------"
+	puts params[:category]
+	puts "region--------------------"
+	puts params[:region]
+	puts "title--------------------"
+	puts params[:title]
+	puts "Text--------------------"
+	puts params[:text]
+	puts "price--------------------"
+	puts params[:price]
+	puts "currency--------------------"
+	puts params[:curr]
+	puts "user_id--------------------"
+	puts cookies[:alluznet].to_s
+	data = { :success => 'true', :text => "Объявление добавлен!"}
+	render :text => data.to_json, :layout => false
   end
   
   
@@ -263,6 +296,28 @@ class MainController < ApplicationController
   
 
   #categories
+  
+  def getRegions
+	headers["Content-Type"] = "text/plain; charset=utf-8" 
+	@base = Region.find(:all , :select => "id, region_"+cookies[:alluznet_lang])
+	@arr="{"
+	@arr += "rows: ["
+	if !@base.empty?
+		for sub in @base
+			if cookies[:alluznet_lang]=='uz'
+				@arr += "{id:' " + sub.id.to_s + "', value:'" + sub.region_uz + "'},"
+			elsif cookies[:alluznet_lang]=='ru'
+				@arr += "{id: '" + sub.id.to_s + "', value:'" + sub.region_ru + "'},"
+			else 
+				@arr += "{id: '" + sub.id.to_s + "', value:'" + sub.region_en + "'},"
+			end
+		end
+	end
+	@arr += "]}"
+	render :text => @arr
+  end
+  
+  
   
   def getCats
 	headers["Content-Type"] = "text/plain; charset=utf-8" 

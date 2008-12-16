@@ -67,13 +67,16 @@ function addAnnounce()
 			name: 'region',
 			xtype: 'combo',
 			width: 250,
-			store: new Ext.data.SimpleStore({
-				fields: ['index', 'regions'],
-				data : Language.regions
+			store: new Ext.data.JsonStore({
+                autoLoad: true,
+                url: '/main/getRegions',
+                root: 'rows',
+				fields:['id', 'value']
 			}),
 			displayField:'regions',
 			mode: 'local',
 			typeAhead: true,
+			displayField: 'value',
 	        triggerAction: 'all',
 	        forceSelection:true,
 			allowBlank:false,
@@ -122,6 +125,7 @@ function addAnnounce()
 					}),
 					mode: 'local',
 					displayField:'value',
+					valueField: 'abbr',
 					triggerAction: 'all',
 					typeAhead: true,
 					forceSelection:true,
@@ -133,20 +137,20 @@ function addAnnounce()
 		buttons: [{
 				text: Language.add_ann,
 				handler: function() {
-					 // Announce.getForm().submit(
-                        // {
-                            // method: 'GET',
-                            // reset : true,
-                            // success : function(t1, t2){
-                                // Ext.Msg.alert('Info',t2.result.text);
-                                // win.close();
-                                // location.assign('/main');
-								// },
-                            // failure: function(form,qaytdi){
-                                // Ext.Msg.alert('Error',qaytdi.result.text);
-								// }
-                        // });
-			}
+					 Announce.getForm().submit(
+                        {
+                            method: 'GET',
+                            reset : true,
+                            success : function(t1, t2){
+                                Ext.Msg.alert('Info',t2.result.text);
+                                win.close();
+                                location.assign('/main');
+								},
+                            failure: function(form,qaytdi){
+                                Ext.Msg.alert('Error',qaytdi.result.text);
+								}
+                        });
+				}
 			},{
 				text: Language.close,
 				listeners:{
