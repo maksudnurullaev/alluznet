@@ -21,33 +21,37 @@ function addAnnounce()
 	var Announce = new Ext.FormPanel({
 		labelWidth: 70,
 		autoHeight: true,
-        id: 'forgot',
+        id: 'Announce',
 		url: '/main/addAnnounce',
 		frame: true,
 		border: false,
 		items: [{
-			fieldLabel: Language.type,
+            fieldLabel: Language.type,
+			triggerAction: 'all',
 			name: 'type',
 			xtype: 'combo',
 			width: 250,
-			store: new Ext.data.SimpleStore({
-				fields: ['abbr', 'state'],
-				data : Language.types
-			}),
-			displayField:'state',
 			mode: 'local',
+			lazyInit: true,
+			displayField: 'values',
+			valueField: 'ids',
+			forceSelection:true,
 			typeAhead: true,
-	        triggerAction: 'all',
-	        forceSelection:true,
 			allowBlank:false,
-			editable: false
+			editable: false,
+			store: new Ext.data.JsonStore({
+                autoLoad: true,
+                url: '/main/getTips',
+                root: 'rows',
+				fields:['ids', 'values']
+			})
+			
 		},{
 			fieldLabel: Language.category,
 			triggerAction: 'all',
 			name: 'category',
 			xtype: 'combo',
-            name: 'category',
-			width: 250,
+            width: 250,
             mode: 'local',
             lazyInit: true,
             displayField: 'value',
@@ -144,8 +148,7 @@ function addAnnounce()
                             success : function(t1, t2){
                                 Ext.Msg.alert('Info',t2.result.text);
                                 win.close();
-                                location.assign('/main');
-								},
+                                },
                             failure: function(form,qaytdi){
                                 Ext.Msg.alert('Error',qaytdi.result.text);
 								}

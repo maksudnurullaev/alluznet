@@ -2,28 +2,30 @@ require 'rss/1.0'
 require 'rss/2.0'
 require 'open-uri'
 require 'date'
-
-
 class MainController < ApplicationController
   def index
 	
 	if cookies[:alluznet_lang]==nil || cookies[:alluznet_lang]==""
+		lng = 'ru'
 		cookies[:alluznet_lang] = 'ru'
 		@lang='lang_ru'
 	else
 		@lang='lang_'+cookies[:alluznet_lang]
 	end
 	if cookies[:alluznet_lang]=='uz'
+		lng = 'uz'
 		@uname='Мехмон'
 		@title='AllUz.Net Бош сахифаси'
 	elsif cookies[:alluznet_lang]=='en'
+		lng = 'en'
 		@uname='Guest'
 		@title='Main page AllUz.Net'
 	else
+		lng = 'ru'
 		@uname='Гость'
 		@title='Главная страница AllUz.Net'
 	end
-    @cookie = false
+	@cookie = false
 	@uid = cookies[:alluznet].to_s
     if (!@uid.empty?)
 		@cookie = true
@@ -36,6 +38,7 @@ class MainController < ApplicationController
 			@phone=@uinfo[0].phone
 	    end
     end
+	
 	begin
 		source = "http://bank.uz/scripts/rss_valute?valute=2"
 		content = "" 
@@ -65,40 +68,124 @@ class MainController < ApplicationController
   def title(wordCount)
 	text.split[0..(wordCount-1)].join(" ") +(text.split.size > wordCount ? "..." : "")
   end
+  
   #addAnnouncment
   def addAnnounce
-	@alltext=params[:title]+"~"+params[:title]
+	@alltext=params[:title]+"~"+params[:text]
 	@price=params[:price]
 	@currency=params[:curr]
-	reg=Region.find(:all, :select => "id", :conditions => ["region_"+cookies[:alluznet_lang]+"=?",params[:region]])
-	if !reg.empty?
-		@reg_id=reg[0].id.to_s
-		@user_id=cookies[:alluznet]
-		
+	cat = Category.find(:all, :select => "category", :conditions => ["title_"+cookies[:alluznet_lang]+"=?",params[:category]])
+	reg = Region.find(:all, :select => "id", :conditions => ["region_"+cookies[:alluznet_lang]+"=?",params[:region]])
+	type = Tip.find(:all, :select => "id", :conditions => ["tip_"+cookies[:alluznet_lang]+"=?",params[:type]])
+	if !reg.empty? && !cat.empty? && !type.empty? && cookies[:alluznet]!=nil
+		@today = Time.now.day.to_s+"."+Time.now.month.to_s+"."+Time.now.year.to_s+" "+Time.now.hour.to_s+":"+Time.now.min.to_s+":"+Time.now.sec.to_s
+		@post = Post.new
+		@post.tekst = @alltext
+		@post.price = @price
+		@post.tip_id = type[0].id
+		@post.category = cat[0].category
+		@post.currency = @currency
+		@post.region = reg[0].id.to_s
+		@post.user_id = cookies[:alluznet]
+		@post.posted_at = @today
+		if @post.save
+			data = { :success => 'true', :text => "Объявление добавлен!"}
+		else
+			data = { :failure => 'true', :text => "Произошло ошибка!"}
+		end
 	else
-		
+		data = { :failure => 'true', :text => "Произошло ошибка!"}
 	end
-	puts Date.today.to_s
-	puts "type--------------------"
-	puts params[:type]
-	puts "category--------------------"
-	puts params[:category]
-	puts "region--------------------"
-	puts params[:region]
-	puts "title--------------------"
-	puts params[:title]
-	puts "Text--------------------"
-	puts params[:text]
-	puts "price--------------------"
-	puts params[:price]
-	puts "currency--------------------"
-	puts params[:curr]
-	puts "user_id--------------------"
-	puts cookies[:alluznet].to_s
-	data = { :success => 'true', :text => "Объявление добавлен!"}
 	render :text => data.to_json, :layout => false
   end
   
+  
+  def getPosts
+  
+  
+  end
+  
+  def getLastPostsMain
+	start = 0
+	limit = 5
+	puts "-------------------------------"
+	puts params[:nodeid]
+	puts params[:tip_id]
+	if params[:start] != nil
+		start = params[:start]
+		limit = params[:limit]
+	end
+	if params[:nodeid] != nil
+		@post_count = Post.count(:conditions => ["posts.tip_id = ? AND posts.category LIKE ?",params[:tip_id], params[:nodeid]+"%"] )
+		@posts = Post.find(:all, :select => "tekst, price, currency, title_" + cookies[:alluznet_lang] + ", tip_" + cookies[:alluznet_lang] + ", region_" + cookies[:alluznet_lang] + ", posted_at", 
+						:order => "posted_at DESC",
+						:conditions => ["posts.tip_id = ? AND posts.category LIKE ?",params[:tip_id], params[:nodeid]+"%"], 
+						:joins => "join categories on posts.category = categories.category join tips on tips.id = posts.tip_id 
+						join regions on regions.id = posts.region", :limit => limit, :offset => start)
+	else 
+		@post_count = Post.count(:conditions => ["posts.tip_id = ?",params[:tip_id]] )
+		@posts = Post.find(:all, :select => "tekst, price, currency, title_" + cookies[:alluznet_lang] + ", tip_" + cookies[:alluznet_lang] + ", region_" + cookies[:alluznet_lang] + ", posted_at", 
+						:order => "posted_at DESC",
+						:conditions => ["posts.tip_id = ?",params[:tip_id]], 
+						:joins => "join categories on posts.category = categories.category join tips on tips.id = posts.tip_id 
+						join regions on regions.id = posts.region", :limit => limit, :offset => start)
+	end
+	if !@posts.empty?
+		dataes = "{totalCount:'" + @post_count.to_s + "', rows: ["
+		for post in @posts
+			if cookies[:alluznet_lang]=="uz"
+				cat = post.title_uz
+				reg = post.region_uz
+				tip = post.tip_uz
+			elsif cookies[:alluznet_lang]=="ru"
+				cat = post.title_ru
+				reg = post.region_ru
+				tip = post.tip_ru
+			else
+				cat = post.title_en
+				reg = post.region_en
+				tip = post.tip_en
+			end
+			dataes += "{date:'"+ post.posted_at + "', announce:'" + post.tekst + "', price:'" + post.price.to_s + "', tip:'" + 
+				tip + "',category:'" + cat + "',region:'" + reg + "'},"
+		end
+		dataes += "]}"
+	else
+	end
+	render :text => dataes, :layout => true
+  end
+  
+  # def getPosts
+	# node_id=params[:nodeid]
+	# @posts = Post.find(:all, :select => "tekst, price, currency, title_" + cookies[:alluznet_lang] + ", tip_" + cookies[:alluznet_lang] + ", region_" + cookies[:alluznet_lang] + ", users.email, posted_at", 
+						# :conditions => ["posts.category LIKE ?",node_id+"%"], 
+						# :order => "posted_at DESC",
+						# :joins => "join categories on posts.category = categories.category join tips on tips.id = posts.tip_id 
+						# join regions on regions.id = posts.region  join users on users.id = posts.user_id", :limit => 10)
+	# if !@posts.empty?
+		# dataes="["
+		# for post in @posts
+			# if cookies[:alluznet_lang]=="uz"
+				# cat = post.title_uz
+				# reg = post.region_uz
+				# tip = post.tip_uz
+			# elsif cookies[:alluznet_lang]=="ru"
+				# cat = post.title_ru
+				# reg = post.region_ru
+				# tip = post.tip_ru
+			# else
+				# cat = post.title_en
+				# reg = post.region_en
+				# tip = post.tip_en
+			# end
+			# dataes += "['" + post.posted_at + "','" + post.tekst + "'," + post.price.to_s + ",'" + tip + "','" + cat + "','" + reg + "'],"
+		# end
+		# dataes += "]"
+		# render :text => dataes, :layout => true
+	# else
+		# render :text => "[['','',,'','','']]", :layout => true
+	# end
+  # end
   
   #multilanguage
   def chage_language
@@ -110,8 +197,6 @@ class MainController < ApplicationController
 	end
 	render :text => data, :layout => false
   end
-  
-  
   
   def getTexts
 	lang=params[:lang]
@@ -314,9 +399,32 @@ class MainController < ApplicationController
 		end
 	end
 	@arr += "]}"
+	puts @arr
 	render :text => @arr
   end
   
+  
+  def getTips
+	headers["Content-Type"] = "text/plain; charset=utf-8" 
+	@base = Tip.find(:all , :select => "id, tip_"+cookies[:alluznet_lang])
+	@arr="{"
+	@arr += "rows: ["
+	if !@base.empty?
+		for sub in @base
+			if cookies[:alluznet_lang]=='uz'
+				@arr += "{ids:'id" + sub.id.to_s + "', values:'" + sub.tip_uz + "'},"
+			elsif cookies[:alluznet_lang]=='ru'
+				@arr += "{ids:'id" + sub.id.to_s + "', values:'" + sub.tip_ru + "'},"
+			else 
+				@arr += "{ids:'id" + sub.id.to_s + "', values:'" + sub.tip_en + "'},"
+			end
+		end
+	end
+	@arr += "]}"
+	puts "----------------------------"
+	puts @arr
+	render :text => @arr
+  end
   
   
   def getCats
@@ -336,6 +444,7 @@ class MainController < ApplicationController
 		end
 	end
 	@arr += "]}"
+	puts @arr
 	render :text => @arr
   end
   

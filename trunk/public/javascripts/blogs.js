@@ -38,7 +38,6 @@ var banner = {
 			height:  100,
 			region: 'north',
 			margins: '5 5 5 5',
-			
 			split: false,
 			border: false,
 			layout: 'border',
