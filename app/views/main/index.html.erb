@@ -23,6 +23,7 @@
 				treeloader.baseParams.index = node.getDepth();    
 				treeloader.baseParams.path = node.id;
             }, this); 
+		//var itms = generateItems("<%=@all%>",Language.lastAdded);
 			<% if (!@cookie) %>
 			stbar = new Ext.StatusBar({
 				text: Language.hi+'<%=@uname%>',
@@ -99,6 +100,7 @@
 					})
 				}]
                 });
+
 	tabpanel = {
 			region: 'center',
 			title: 'Main tab panel',
@@ -108,13 +110,21 @@
 			enableTabScroll: true,
 			deferredRender: false,
 			minTabWidth: 120,
-			activeTab: 0,
+			activeTab: 1,
 			items: [{
 				html: 'Новости системы',
 				iconCls: 'tree-1-3',
 				title: Language.news,
                 id: 'MainTab',
                 border: true
+			},{
+				border: false,
+				name: 'newposts',
+				bodyStyle: 'padding: 10',
+				layout: 'form',
+				title: Language.lastAdded,
+				id: 'newposts',
+				items: getPages('%')
 			}]
 		};
         <% else %>
@@ -127,13 +137,21 @@
 			enableTabScroll: true,
 			deferredRender: false,
 			minTabWidth: 120,
-			activeTab: 0,
+			activeTab: 1,
 			items: [{
 				html: 'Новости сайта',
 				iconCls: 'tree-1-3',
 				title: Language.news,
 				id: 'MainTab',
 				border: true
+			},{
+				border: false,
+				name: 'newposts',
+				bodyStyle: 'padding: 10',
+				layout: 'form',
+				title: Language.lastAdded,
+				id: 'newposts',
+				items: getPages('%')
 			},{
 				title: Language.per_cab,
 				xtype: 'form',
@@ -183,7 +201,7 @@
 					}],
 					bbar: new Ext.StatusBar({
 						defaultText: '',
-						id: 'basic-statusbar',
+						id: 'password_statusbar',
 						items: [{
 							text: Language.save,
 							id: 'btnsave',
@@ -192,7 +210,7 @@
 							{
 								op=Ext.getCmp('oldPass').getValue();
 								np=Ext.getCmp('newPass').getValue();
-								loadFn('btnsave', 'basic-statusbar', op, np)
+								loadFn('btnsave', 'password_statusbar', op, np)
 							}
 						}]
 					})
@@ -230,7 +248,7 @@
 					}],
 					bbar: new Ext.StatusBar({
 						defaultText: '',
-						id: 'basic-statusbar',
+						id: 'info_statusbar',
 						items: [{
 							text: Language.save,
 							id: 'btnsave',
@@ -240,13 +258,14 @@
 								fn=Ext.getCmp('fname').getValue();
 								ln=Ext.getCmp('lname').getValue();
 								p=Ext.getCmp('phone').getValue();
-								save_data('btnsave', 'basic-statusbar', fn, ln, p)
+								save_data('btnsave', 'info_statusbar', fn, ln, p)
 							}
 						}]
 					})
 				}]
 			}]
 		};
+		//store.load({params:{tip_id:2}});
 		stbar = new Ext.StatusBar({
 				text: Language.hi+'<%=@uname%>',
 				id: 'hi',
